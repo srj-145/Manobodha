@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import Chart from 'chart.js/auto';
 	import type { GraphConfig, GraphDataPoint } from '$lib/types/theory';
 
 	let {
@@ -17,17 +16,24 @@
 	} = $props();
 
 	let canvas: HTMLCanvasElement;
-	let chart: Chart | null = null;
+	let chart: any = null;
 
+	// Synchronize both chart data AND dataset label dynamically
 	$effect(() => {
-		if (chart && dataPoints) {
-			chart.data.datasets[0].data = dataPoints;
+		const currentPoints = dataPoints;
+		const currentTitle = config.title;
+
+		if (chart) {
+			chart.data.datasets[0].data = currentPoints;
+			chart.data.datasets[0].label = currentTitle;
 			chart.update();
 		}
 	});
 
-	onMount(() => {
+	onMount(async () => {
 		if (!canvas) return;
+
+		const { default: Chart } = await import('chart.js/auto');
 
 		chart = new Chart(canvas, {
 			type: config.chartType || 'line',

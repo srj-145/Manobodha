@@ -45,7 +45,7 @@
 		extinctionMode: false
 	});
 
-	// Reactively re-calculate curve points on control mutation
+	// Reactively compute graph points whenever slider or dropdown changes
 	const dataPoints = $derived(
 		calculateOperantCumulativeRecord(
 			controlValues.scheduleType,
@@ -54,21 +54,27 @@
 		)
 	);
 
-	const graphConfig: GraphConfig = $derived({
-		title: `Cumulative Response Curve (${controlValues.scheduleType.toUpperCase()})`,
-		xAxisLabel: 'Time (s)',
+	const graphConfig: GraphConfig = {
+		title: 'Cumulative Response Graph',
+		xAxisLabel: 'Elapsed Time (seconds)',
 		yAxisLabel: 'Cumulative Responses',
 		chartType: 'line'
-	});
+	};
 </script>
 
 <div class="space-y-6 p-6 {accessibility.highContrast ? 'bg-black text-white' : ''}">
 	<header class="flex items-center justify-between border-b pb-4">
 		<div>
 			<h1 class="text-3xl font-bold tracking-tight">Manobodha Workbench</h1>
-			<p class="text-sm text-muted-foreground">Interactive Simulation Engine</p>
+			<p class="text-sm text-muted-foreground">Interactive Psychology Simulation Platform</p>
 		</div>
 		<div class="flex items-center gap-3">
+			<a
+				href="/sandbox/operant-conditioning"
+				class="rounded-md bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
+			>
+				Open Dynamic Sandbox Route →
+			</a>
 			<button
 				type="button"
 				onclick={() => accessibility.toggleHighContrast()}
