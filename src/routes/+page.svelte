@@ -68,28 +68,6 @@
 	/>
 </svelte:head>
 
-<header id="hd" bind:this={headerElement} class:o={mobileMenuOpen}>
-	<div class="w nb">
-		<a class="logo" href="#top">Manobodha<i>.</i></a>
-		<button
-			class="mb"
-			id="mb"
-			aria-expanded={mobileMenuOpen}
-			aria-controls="nv"
-			onclick={toggleMenu}
-		>
-			Menu
-		</button>
-		<nav id="nv" aria-label="Main">
-			<a class:on={activeSection === 'top'} href="#top" onclick={closeMenu}>Home</a>
-			<a class:on={activeSection === 'start'} href="#start" onclick={closeMenu}>Explore</a>
-			<a class:on={activeSection === 'world'} href="/map" onclick={closeMenu}>Theory Map</a>
-			<a class:on={activeSection === 'compare'} href="/compare" onclick={closeMenu}>Compare</a>
-			<a class:on={activeSection === 'who'} href="#who" onclick={closeMenu}>About</a>
-		</nav>
-		<a class="go" href="#start">Get Started <span class="arr">→</span></a>
-	</div>
-</header>
 
 <main id="top">
 	<!-- Hero Section -->
@@ -98,7 +76,8 @@
 			<p class="lab">Interactive psychology &amp; learning theory</p>
 			<h1>Understand theories. <em>Don’t just memorize them.</em></h1>
 			<p class="lede">
-				Explore how psychological and learning theories work through interactive experiences, visual connections, and different perspectives.
+				Explore how psychological and learning theories work through interactive experiences, visual
+				connections, and different perspectives.
 			</p>
 			<div class="cta">
 				<a class="btn" href="#start">Explore Manobodha <span class="arr">→</span></a>
@@ -106,17 +85,52 @@
 			</div>
 		</div>
 		<div class="art">
-			<svg viewBox="0 0 480 460" role="img" aria-label="Line illustration: a central theory node connected to Learning, Behaviour, Memory and Motivation">
+			<svg
+				viewBox="0 0 480 460"
+				role="img"
+				aria-label="Line illustration: a central theory node connected to Learning, Behaviour, Memory and Motivation"
+			>
 				<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
 					<path class="ln" style="--l:520" stroke="var(--ink)" d="M240 230Q150 170 92 92" />
-					<path class="ln" style="--l:520;animation-delay:.6s" stroke="var(--ink)" d="M240 230Q330 160 396 96" />
-					<path class="ln" style="--l:520;animation-delay:.9s" stroke="var(--ink)" d="M240 230Q160 300 96 374" />
-					<path class="ln" style="--l:520;animation-delay:1.2s" stroke="var(--ink)" d="M240 230Q340 310 394 376" />
-					<path class="ln" style="--l:380;animation-delay:1.5s" stroke="var(--rust)" stroke-dasharray="3 6" d="M92 92Q230 20 396 96" />
-					<path class="ln" style="--l:380;animation-delay:1.7s" stroke="var(--sage)" d="M96 374Q240 440 394 376" />
+					<path
+						class="ln"
+						style="--l:520;animation-delay:.6s"
+						stroke="var(--ink)"
+						d="M240 230Q330 160 396 96"
+					/>
+					<path
+						class="ln"
+						style="--l:520;animation-delay:.9s"
+						stroke="var(--ink)"
+						d="M240 230Q160 300 96 374"
+					/>
+					<path
+						class="ln"
+						style="--l:520;animation-delay:1.2s"
+						stroke="var(--ink)"
+						d="M240 230Q340 310 394 376"
+					/>
+					<path
+						class="ln"
+						style="--l:380;animation-delay:1.5s"
+						stroke="var(--rust)"
+						stroke-dasharray="3 6"
+						d="M92 92Q230 20 396 96"
+					/>
+					<path
+						class="ln"
+						style="--l:380;animation-delay:1.7s"
+						stroke="var(--sage)"
+						d="M96 374Q240 440 394 376"
+					/>
 					<circle cx="240" cy="230" r="62" stroke="var(--ink)" stroke-width="1.8" />
 					<circle cx="240" cy="230" r="46" stroke="var(--rust)" stroke-dasharray="2 5" />
-					<path d="M214 232c6-16 22-22 34-12 10-8 22 2 18 14-2 12-14 16-22 10-6 8-22 6-24-4-4-2-6-6-6-8z" stroke="var(--ink)" stroke-width="1.2" opacity=".75" />
+					<path
+						d="M214 232c6-16 22-22 34-12 10-8 22 2 18 14-2 12-14 16-22 10-6 8-22 6-24-4-4-2-6-6-6-8z"
+						stroke="var(--ink)"
+						stroke-width="1.2"
+						opacity=".75"
+					/>
 				</g>
 				<g fill="var(--bg)" stroke="var(--ink)" stroke-width="1.2">
 					<circle cx="92" cy="92" r="9" />
@@ -144,7 +158,8 @@
 		<p class="lab rv">The idea</p>
 		<h2 class="rv">What if you could explore a theory instead of just reading about it?</h2>
 		<p class="p rv">
-			Manobodha turns abstract psychological ideas into interactive experiences. Change what matters, observe what happens, and build a clearer mental model of the theory.
+			Manobodha turns abstract psychological ideas into interactive experiences. Change what
+			matters, observe what happens, and build a clearer mental model of the theory.
 		</p>
 		<div class="steps rv">
 			<div><b>01</b><span>Explore</span></div>
@@ -162,7 +177,10 @@
 				<span class="n">01</span>
 				<div>
 					<h3>Explore Sandboxes</h3>
-					<p>Step inside interactive simulations for Operant Conditioning and the Ebbinghaus Forgetting Curve.</p>
+					<p>
+						Step inside interactive simulations for Operant Conditioning and the Ebbinghaus
+						Forgetting Curve.
+					</p>
 				</div>
 				<span class="ar">→</span>
 			</a>
@@ -170,7 +188,10 @@
 				<span class="n">02</span>
 				<div>
 					<h3>Connect Concepts</h3>
-					<p>See how psychological and learning theories relate to one another in our visual graph map.</p>
+					<p>
+						See how psychological and learning theories relate to one another in our visual graph
+						map.
+					</p>
 				</div>
 				<span class="ar">→</span>
 			</a>
@@ -246,13 +267,20 @@
 				<p class="lab rv">Theory world</p>
 				<h2 class="rv">A growing collection of ideas worth understanding.</h2>
 				<p class="p rv">
-					Psychology is bigger than a list of definitions. Manobodha brings different perspectives together so you can explore how ideas connect, differ, and evolve.
+					Psychology is bigger than a list of definitions. Manobodha brings different perspectives
+					together so you can explore how ideas connect, differ, and evolve.
 				</p>
 				<a class="lk rv" href="/map">Explore the Theory Map <span class="arr">→</span></a>
 			</div>
-			<svg viewBox="0 0 480 400" role="img" aria-label="Teaser network linking Theory, Learning, Behaviour, Memory, Motivation and Cognition">
+			<svg
+				viewBox="0 0 480 400"
+				role="img"
+				aria-label="Teaser network linking Theory, Learning, Behaviour, Memory, Motivation and Cognition"
+			>
 				<g stroke="var(--ink)" stroke-width="1" opacity=".5" fill="none">
-					<path d="M240 200L110 90M240 200L370 80M240 200L90 270M240 200L390 290M240 200L240 350M110 90L370 80M90 270L240 350M390 290L240 350" />
+					<path
+						d="M240 200L110 90M240 200L370 80M240 200L90 270M240 200L390 290M240 200L240 350M110 90L370 80M90 270L240 350M390 290L240 350"
+					/>
 					<path d="M240 200L430 190" stroke-dasharray="3 6" />
 					<path d="M240 200L40 170" stroke-dasharray="3 6" />
 				</g>
@@ -261,8 +289,20 @@
 					<circle cx="40" cy="170" r="3" fill="var(--mut)" />
 				</g>
 				<g class="nd">
-					<circle cx="240" cy="200" r="34" fill="var(--bg)" stroke="var(--rust)" stroke-width="1.8" />
-					<text class="nl" x="240" y="205" style="font-style:italic;font-family:Fraunces,serif;font-size:18px">Theory</text>
+					<circle
+						cx="240"
+						cy="200"
+						r="34"
+						fill="var(--bg)"
+						stroke="var(--rust)"
+						stroke-width="1.8"
+					/>
+					<text
+						class="nl"
+						x="240"
+						y="205"
+						style="font-style:italic;font-family:Fraunces,serif;font-size:18px">Theory</text
+					>
 				</g>
 				<g class="nd">
 					<circle cx="110" cy="90" r="9" fill="var(--bg)" stroke="var(--ink)" />
@@ -297,7 +337,13 @@
 			<g fill="none" stroke="var(--ink)" stroke-width="1.2">
 				<path d="M380 0V50M130 50H630M130 50V100M380 50V100M630 50V100" />
 			</g>
-			<g font-family="Fraunces,serif" font-size="26" font-weight="300" text-anchor="middle" fill="var(--ink)">
+			<g
+				font-family="Fraunces,serif"
+				font-size="26"
+				font-weight="300"
+				text-anchor="middle"
+				fill="var(--ink)"
+			>
 				<text x="130" y="140" fill="var(--rust)">Behaviorism</text>
 				<text x="380" y="140" fill="var(--sage)">Cognitivism</text>
 				<text x="630" y="140" fill="var(--blue)">Constructivism</text>
@@ -309,7 +355,8 @@
 			</g>
 		</svg>
 		<p class="p rv" style="margin:48px auto 0;text-align:center">
-			Different theories ask different questions. Manobodha lets you see those differences side-by-side.
+			Different theories ask different questions. Manobodha lets you see those differences
+			side-by-side.
 		</p>
 		<p style="text-align:center">
 			<a class="lk rv" href="/compare">Compare perspectives <span class="arr">→</span></a>
@@ -319,7 +366,9 @@
 	<!-- Audience Section -->
 	<section id="who" class="w">
 		<p class="lab rv">Made for curious minds</p>
-		<h2 class="rv">For people learning psychology — and people who simply want to understand it better.</h2>
+		<h2 class="rv">
+			For people learning psychology — and people who simply want to understand it better.
+		</h2>
 		<div class="two rv">
 			<div>
 				<h3>Psychology students</h3>
@@ -355,31 +404,31 @@
 
 <style>
 	:global(:root) {
-		--bg: #F7F4EE;
+		--bg: #f7f4ee;
 		--ink: #172238;
 		--mut: #596177;
-		--line: #D8D4CA;
-		--rust: #B44F3B;
-		--sage: #6B7C69;
-		--blue: #566F8F;
-		--yel: #C9A04F;
-		--pap: #EEEAE0;
-		--inv: #F7F4EE;
+		--line: #d8d4ca;
+		--rust: #b44f3b;
+		--sage: #6b7c69;
+		--blue: #566f8f;
+		--yel: #c9a04f;
+		--pap: #eeeae0;
+		--inv: #f7f4ee;
 		box-sizing: border-box;
 		padding-top: env(safe-area-inset-top, 0px);
 		padding-bottom: env(safe-area-inset-bottom, 0px);
 	}
 
 	@media (prefers-color-scheme: dark) {
-		:global(:root:not([data-theme="light"])) {
+		:global(:root:not([data-theme='light'])) {
 			--bg: #111826;
-			--ink: #EDE8DC;
-			--mut: #A3AABB;
+			--ink: #ede8dc;
+			--mut: #a3aabb;
 			--line: #2b3446;
-			--rust: #E27E67;
-			--sage: #97AA95;
-			--blue: #8CA8CC;
-			--yel: #DFB866;
+			--rust: #e27e67;
+			--sage: #97aa95;
+			--blue: #8ca8cc;
+			--yel: #dfb866;
 			--pap: #182034;
 			--inv: #111826;
 		}
@@ -394,7 +443,10 @@
 		margin: 0;
 		background: var(--bg);
 		color: var(--ink);
-		font: 400 17px/1.65 "DM Sans", system-ui, sans-serif;
+		font:
+			400 17px/1.65 'DM Sans',
+			system-ui,
+			sans-serif;
 		-webkit-font-smoothing: antialiased;
 	}
 
@@ -408,10 +460,12 @@
 		outline-offset: 3px;
 	}
 
-	h1, h2, h3, .f {
+	h1,
+	h2,
+	h3 {
 		font-family: Fraunces, Georgia, serif;
 		font-weight: 300;
-		letter-spacing: -.025em;
+		letter-spacing: -0.025em;
 	}
 
 	.w {
@@ -421,8 +475,8 @@
 	}
 
 	.lab {
-		font: 700 12px/1 "DM Sans";
-		letter-spacing: .15em;
+		font: 700 12px/1 'DM Sans';
+		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		color: var(--mut);
 		margin: 0 0 28px;
@@ -432,7 +486,7 @@
 	}
 
 	.lab:before {
-		content: "";
+		content: '';
 		width: 28px;
 		border-top: 1px solid var(--rust);
 	}
@@ -444,7 +498,7 @@
 
 	.arr {
 		display: inline-block;
-		transition: transform .2s;
+		transition: transform 0.2s;
 	}
 	a:hover .arr {
 		transform: translateX(5px);
@@ -454,7 +508,7 @@
 		position: sticky;
 		top: env(safe-area-inset-top, 0px);
 		z-index: 10;
-		transition: .25s;
+		transition: 0.25s;
 		border-bottom: 1px solid transparent;
 	}
 
@@ -469,15 +523,17 @@
 		display: flex;
 		align-items: center;
 		height: 80px;
-		transition: height .25s;
+		transition: height 0.25s;
 	}
 	:global(header.s) .nb {
 		height: 58px;
 	}
 
 	.logo {
-		font: 400 23px Fraunces, serif;
-		letter-spacing: -.02em;
+		font:
+			400 23px Fraunces,
+			serif;
+		letter-spacing: -0.02em;
 	}
 	.logo i {
 		color: var(--rust);
@@ -495,20 +551,21 @@
 		color: var(--mut);
 		border-bottom: 1.5px solid transparent;
 		padding: 3px 0;
-		transition: .2s;
+		transition: 0.2s;
 	}
-	nav a:hover, nav a.on {
+	nav a:hover,
+	nav a.on {
 		color: var(--ink);
 		border-color: var(--rust);
 	}
 
 	.go {
 		margin-left: 32px;
-		font: 700 14px "DM Sans";
+		font: 700 14px 'DM Sans';
 		padding: 10px 18px;
 		border: 1px solid var(--ink);
 		border-radius: 4px;
-		transition: .2s;
+		transition: 0.2s;
 	}
 	.go:hover {
 		background: var(--ink);
@@ -523,7 +580,7 @@
 		color: var(--ink);
 		border-radius: 4px;
 		padding: 10px 14px;
-		font: 600 14px "DM Sans";
+		font: 600 14px 'DM Sans';
 		min-height: 44px;
 	}
 
@@ -538,7 +595,7 @@
 
 	h1 {
 		font-size: clamp(46px, 7vw, 96px);
-		line-height: .96;
+		line-height: 0.96;
 		margin: 0 0 28px;
 	}
 
@@ -562,7 +619,7 @@
 		font-weight: 700;
 		padding: 17px 28px;
 		border-radius: 4px;
-		transition: .2s;
+		transition: 0.2s;
 		min-height: 48px;
 		display: inline-block;
 	}
@@ -590,7 +647,7 @@
 	.ln {
 		stroke-dasharray: var(--l, 400);
 		stroke-dashoffset: var(--l, 400);
-		animation: dr 2.4s .3s ease forwards;
+		animation: dr 2.4s 0.3s ease forwards;
 	}
 
 	@keyframes dr {
@@ -600,7 +657,9 @@
 	}
 
 	.hl {
-		font: italic 300 17px Fraunces, serif;
+		font:
+			italic 300 17px Fraunces,
+			serif;
 		fill: var(--ink);
 	}
 
@@ -638,14 +697,16 @@
 
 	.steps b {
 		display: block;
-		font: 300 15px "DM Sans";
+		font: 300 15px 'DM Sans';
 		color: var(--mut);
 	}
 	.steps span {
 		display: block;
-		font: 300 clamp(28px, 3.4vw, 44px) Fraunces, serif;
+		font:
+			300 clamp(28px, 3.4vw, 44px) Fraunces,
+			serif;
 		margin-top: 36px;
-		letter-spacing: -.02em;
+		letter-spacing: -0.02em;
 	}
 
 	.rows {
@@ -659,7 +720,7 @@
 		align-items: center;
 		padding: 38px 0;
 		border-top: 1px solid var(--line);
-		transition: padding .25s;
+		transition: padding 0.25s;
 	}
 	.row:last-child {
 		border-bottom: 1px solid var(--line);
@@ -673,9 +734,11 @@
 	}
 
 	.row .n {
-		font: 300 64px/1 Fraunces, serif;
+		font:
+			300 64px/1 Fraunces,
+			serif;
 		color: var(--line);
-		transition: color .2s;
+		transition: color 0.2s;
 	}
 	.row:hover .n {
 		color: var(--rust);
@@ -684,7 +747,7 @@
 	.row h3 {
 		font-size: clamp(30px, 3.6vw, 48px);
 		margin: 0 0 4px;
-		transition: color .2s;
+		transition: color 0.2s;
 	}
 	.row p {
 		margin: 0;
@@ -693,7 +756,7 @@
 
 	.row .ar {
 		font-size: 28px;
-		transition: transform .2s;
+		transition: transform 0.2s;
 	}
 	.row:hover .ar {
 		transform: translateX(8px);
@@ -725,8 +788,8 @@
 	}
 
 	.cmp h4 {
-		font: 700 12px "DM Sans";
-		letter-spacing: .15em;
+		font: 700 12px 'DM Sans';
+		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		color: var(--mut);
 		margin: 0 0 28px;
@@ -742,14 +805,16 @@
 	}
 
 	.cmp li {
-		font: 300 clamp(30px, 3.6vw, 48px)/1.1 Fraunces, serif;
-		letter-spacing: -.02em;
+		font:
+			300 clamp(30px, 3.6vw, 48px)/1.1 Fraunces,
+			serif;
+		letter-spacing: -0.02em;
 	}
 
 	.cmp li + li:before {
-		content: "↓";
+		content: '↓';
 		display: block;
-		font: 16px "DM Sans";
+		font: 16px 'DM Sans';
 		color: var(--mut);
 		margin: 12px 0;
 	}
@@ -792,14 +857,24 @@
 		border-radius: 3px;
 	}
 
-	.env .side i:nth-child(1) { width: 70%; }
-	.env .side i:nth-child(2) { width: 90%; }
-	.env .side i:nth-child(3) { width: 55%; }
-	.env .side i:nth-child(4) { width: 80%; }
+	.env .side i:nth-child(1) {
+		width: 70%;
+	}
+	.env .side i:nth-child(2) {
+		width: 90%;
+	}
+	.env .side i:nth-child(3) {
+		width: 55%;
+	}
+	.env .side i:nth-child(4) {
+		width: 80%;
+	}
 
-	.env .side i:nth-child(odd) { position: relative; }
+	.env .side i:nth-child(odd) {
+		position: relative;
+	}
 	.env .side i:nth-child(odd):after {
-		content: "";
+		content: '';
 		position: absolute;
 		top: -3px;
 		left: 40%;
@@ -820,14 +895,16 @@
 		height: 100%;
 		min-height: 290px;
 		filter: blur(2.2px);
-		opacity: .9;
+		opacity: 0.9;
 	}
 
 	.env .tag {
 		position: absolute;
 		right: 20px;
 		bottom: 20px;
-		font: italic 300 20px Fraunces, serif;
+		font:
+			italic 300 20px Fraunces,
+			serif;
 		background: var(--bg);
 		border: 1px solid var(--line);
 		padding: 10px 16px;
@@ -845,7 +922,9 @@
 	}
 
 	@keyframes pu {
-		50% { opacity: .3; }
+		50% {
+			opacity: 0.3;
+		}
 	}
 
 	.world {
@@ -880,7 +959,7 @@
 	}
 
 	.nl {
-		font: 400 14px "DM Sans";
+		font: 400 14px 'DM Sans';
 		fill: var(--ink);
 		text-anchor: middle;
 	}
@@ -897,10 +976,12 @@
 	}
 
 	.sc {
-		font: italic 300 clamp(28px, 3.4vw, 44px) Fraunces, serif;
+		font:
+			italic 300 clamp(28px, 3.4vw, 44px) Fraunces,
+			serif;
 		margin: 56px 0 0;
 		text-align: center;
-		letter-spacing: -.02em;
+		letter-spacing: -0.02em;
 	}
 
 	.tree {
@@ -927,15 +1008,17 @@
 	}
 
 	.two h3 {
-		font: 700 12px "DM Sans";
-		letter-spacing: .15em;
+		font: 700 12px 'DM Sans';
+		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		margin: 0 0 14px;
 	}
 
 	.two p {
 		margin: 0;
-		font: 300 24px/1.35 Fraunces, serif;
+		font:
+			300 24px/1.35 Fraunces,
+			serif;
 		color: var(--ink);
 	}
 
@@ -985,7 +1068,9 @@
 	.rv {
 		opacity: 0;
 		transform: translateY(16px);
-		transition: opacity .9s, transform .9s;
+		transition:
+			opacity 0.9s,
+			transform 0.9s;
 	}
 	:global(.rv.in) {
 		opacity: 1;
@@ -1010,11 +1095,23 @@
 	}
 
 	@media (max-width: 900px) {
-		.w { padding: 0 22px; }
-		section { padding-top: 96px; }
-		.tr { margin-top: 96px; padding: 96px 0; }
-		nav, .go { display: none; }
-		.mb { display: block; }
+		.w {
+			padding: 0 22px;
+		}
+		section {
+			padding-top: 96px;
+		}
+		.tr {
+			margin-top: 96px;
+			padding: 96px 0;
+		}
+		nav,
+		.go {
+			display: none;
+		}
+		.mb {
+			display: block;
+		}
 
 		:global(header.o) nav {
 			display: flex;
@@ -1035,34 +1132,61 @@
 			font-size: 18px;
 		}
 
-		.hero, .world { grid-template-columns: 1fr; gap: 36px; }
-		.hero { min-height: 0; padding-top: 12px; }
-		.steps, .cmp, .two { grid-template-columns: 1fr; }
-		.steps div, .steps div + div {
+		.hero,
+		.world {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+		.hero {
+			min-height: 0;
+			padding-top: 12px;
+		}
+		.steps,
+		.cmp,
+		.two {
+			grid-template-columns: 1fr;
+		}
+		.steps div,
+		.steps div + div {
 			padding: 20px 0;
 			border-left: 0;
 			border-bottom: 1px solid var(--line);
 		}
-		.steps span { margin-top: 12px; }
+		.steps span {
+			margin-top: 12px;
+		}
 		.row {
 			grid-template-columns: 64px 1fr 24px;
 			gap: 14px;
 			padding: 30px 0;
 		}
-		.row .n { font-size: 40px; }
-		.cmp > div, .cmp > div + div { padding: 0; border: 0; }
+		.row .n {
+			font-size: 40px;
+		}
+		.cmp > div,
+		.cmp > div + div {
+			padding: 0;
+			border: 0;
+		}
 		.cmp > div + div {
 			margin-top: 48px;
 			padding-top: 40px;
 			border-top: 1px solid var(--line);
 		}
-		.two div, .two div + div {
+		.two div,
+		.two div + div {
 			padding: 24px 0;
 			border-left: 0;
 			border-bottom: 1px solid var(--line);
 		}
-		.env { grid-template-columns: 1fr; }
-		.env .side { display: none; }
-		.fin { padding: 120px 0 96px; }
+		.env {
+			grid-template-columns: 1fr;
+		}
+		.env .side {
+			display: none;
+		}
+		.fin {
+			padding: 120px 0 96px;
+		}
 	}
 </style>

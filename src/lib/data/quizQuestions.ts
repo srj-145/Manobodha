@@ -58,7 +58,10 @@ export const quizQuestions: Question[] = [
 		theoryTitle: 'Ebbinghaus Forgetting Curve',
 		question: 'How do spaced repetition review sessions impact the retention curve over time?',
 		options: [
-			{ id: 'a', text: 'They reset retention to ~100% and flatten the decay slope (increase stability)' },
+			{
+				id: 'a',
+				text: 'They reset retention to ~100% and flatten the decay slope (increase stability)'
+			},
 			{ id: 'b', text: 'They cause retroactive interference and accelerate forgetting' },
 			{ id: 'c', text: 'They have no mathematical effect on memory stability' },
 			{ id: 'd', text: 'They only work if conducted 100 times back-to-back' }

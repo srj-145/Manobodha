@@ -10,9 +10,7 @@
 
 	// Filter questions for the specific sandbox theory (or load all if no filter is provided)
 	const activeQuestions = $derived(
-		activeTheoryId
-			? quizQuestions.filter((q) => q.theoryId === activeTheoryId)
-			: quizQuestions
+		activeTheoryId ? quizQuestions.filter((q) => q.theoryId === activeTheoryId) : quizQuestions
 	);
 
 	let quizState = $state<QuizState>({
@@ -44,7 +42,7 @@
 		quizState.isCompleted
 			? `Quiz complete! You scored ${quizState.score}/${activeQuestions.length}!`
 			: !quizState.isAnswerSubmitted
-				? currentQuestion?.mascotHint ?? 'Let’s test your knowledge!'
+				? (currentQuestion?.mascotHint ?? 'Let’s test your knowledge!')
 				: quizState.selectedOptionId === currentQuestion?.correctOptionId
 					? 'Spot on! Great understanding!'
 					: 'Not quite! Read the explanation below.'
@@ -86,9 +84,7 @@
 
 	// Dynamic return URL back to the active sandbox or home
 	const backToSandboxUrl = $derived(
-		activeTheoryId
-			? resolveRoute('/sandbox/[theoryId]', { theoryId: activeTheoryId })
-			: '/'
+		activeTheoryId ? resolveRoute('/sandbox/[theoryId]', { theoryId: activeTheoryId }) : '/'
 	);
 </script>
 
@@ -117,19 +113,22 @@
 		<div class="rounded-xl border border-amber-200 bg-amber-50 p-6 text-center text-amber-900">
 			<p class="font-bold">No quiz questions found for this topic yet.</p>
 			<script lang="ts">
-	import { resolveRoute } from '$app/paths';
-	// ... existing imports ...
-</script>
+				import { resolveRoute } from '$app/paths';
+				// ... existing imports ...
+			</script>
 
-<!-- Replace line 119 with this: -->
-{#if activeQuestions.length === 0}
-	<div class="rounded-xl border border-amber-200 bg-amber-50 p-6 text-center text-amber-900">
-		<p class="font-bold">No quiz questions found for this topic yet.</p>
-		<a href={resolveRoute('/')} class="mt-4 inline-block font-medium text-amber-800 underline">
-			Return to Home
-		</a>
-	</div>
-{/if}
+			<!-- Replace line 119 with this: -->
+			{#if activeQuestions.length === 0}
+				<div class="rounded-xl border border-amber-200 bg-amber-50 p-6 text-center text-amber-900">
+					<p class="font-bold">No quiz questions found for this topic yet.</p>
+					<a
+						href={resolveRoute('/')}
+						class="mt-4 inline-block font-medium text-amber-800 underline"
+					>
+						Return to Home
+					</a>
+				</div>
+			{/if}
 		</div>
 	{:else if !quizState.isCompleted}
 		<!-- Main Quiz Flow -->
@@ -145,7 +144,8 @@
 					<div class="h-2 w-full overflow-hidden rounded-full bg-slate-200">
 						<div
 							class="h-full bg-blue-600 transition-all duration-300"
-							style="width: {((quizState.currentQuestionIndex + 1) / activeQuestions.length) * 100}%"
+							style="width: {((quizState.currentQuestionIndex + 1) / activeQuestions.length) *
+								100}%"
 						></div>
 					</div>
 				</div>
@@ -221,7 +221,7 @@
 
 			<!-- Mascot Sidebar -->
 			<div class="flex flex-col items-center justify-start rounded-xl border bg-slate-50/50 p-6">
-				<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Lab Assistant</h3>
+				<h3 class="text-xs font-bold tracking-wider text-slate-400 uppercase">Lab Assistant</h3>
 				<div class="mt-8">
 					<Mascot emote={mascotEmote} speechText={mascotSpeech} color="blue" size="lg" />
 				</div>
@@ -230,7 +230,7 @@
 	{:else}
 		<!-- Quiz Completed Results -->
 		<div class="space-y-6 text-center">
-			<div class="mx-auto max-w-md rounded-2xl border bg-white p-8 shadow-sm space-y-4">
+			<div class="mx-auto max-w-md space-y-4 rounded-2xl border bg-white p-8 shadow-sm">
 				<Mascot emote={mascotEmote} speechText={mascotSpeech} color="pink" size="lg" />
 
 				<h2 class="text-2xl font-bold text-slate-900">Quiz Completed!</h2>
@@ -238,7 +238,7 @@
 					{quizState.score} / {activeQuestions.length}
 				</p>
 
-				<div class="pt-4 flex justify-center gap-3">
+				<div class="flex justify-center gap-3 pt-4">
 					<button
 						type="button"
 						onclick={restartQuiz}

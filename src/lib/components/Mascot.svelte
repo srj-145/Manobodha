@@ -34,14 +34,14 @@
 
 <div
 	class="flex flex-col items-center justify-end {position === 'fixed-bottom-right'
-		? 'fixed bottom-6 right-6 z-50 animate-bounce-short'
+		? 'animate-bounce-short fixed right-6 bottom-6 z-50'
 		: 'relative'}"
 >
 	<!-- Comic Speech Bubble (from Page 2 & 5) -->
 	{#if speechText}
-		<div class="relative mb-2 max-w-xs animate-fade-in">
+		<div class="animate-fade-in relative mb-2 max-w-xs">
 			<div
-				class="rounded-2xl border-2 border-slate-800 bg-white shadow-md font-sans font-semibold text-slate-800 {sizeClasses[
+				class="rounded-2xl border-2 border-slate-800 bg-white font-sans font-semibold text-slate-800 shadow-md {sizeClasses[
 					size
 				].bubbleText}"
 			>

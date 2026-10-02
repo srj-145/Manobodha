@@ -75,28 +75,7 @@
 </svelte:head>
 
 <div class="theory-lab-theme">
-	<header id="hd" class:s={isScrolled} class:o={isMobileOpen}>
-		<div class="w nb">
-			<a class="logo" href={resolveRoute('/')}>Theory<i>Lab</i>.</a>
-			<button
-				class="mb"
-				id="mb"
-				aria-expanded={isMobileOpen}
-				aria-controls="nv"
-				onclick={toggleMobileMenu}
-			>
-				Menu
-			</button>
-			<nav id="nv" aria-label="Main">
-				<a href={resolveRoute('/')}>Home</a>
-				<a class="on" href={resolveRoute('/explore')} aria-current="page">Explore</a>
-				<a href={resolveRoute('/map')}>Theory Map</a>
-				<a href={resolveRoute('/compare')}>Compare</a>
-				<a href="/#about">About</a>
-			</nav>
-			<a class="go" href="#choose">Get Started <span class="arr">→</span></a>
-		</div>
-	</header>
+
 
 	<main>
 		<!-- Intro Section -->
@@ -145,13 +124,13 @@
 
 			<div class="list" id="list" role="list">
 				{#each theories as theory, i (theory.name)}
-					<a class="ex rv" href={theory.href} role="listitem">
+					<a class="ex rv" href={theory.href}>
 						<div>
 							<span class="n">{String(i + 1).padStart(2, '0')}</span>
 							<h3>{theory.name}</h3>
 							<p>{theory.desc}</p>
 							<ul class="meta">
-								{#each theory.tags as tag}
+								{#each theory.tags as tag (tag)}
 									<li>{tag}</li>
 								{/each}
 							</ul>

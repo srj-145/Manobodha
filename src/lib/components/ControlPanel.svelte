@@ -54,7 +54,7 @@
 					class="w-full rounded-md border p-2 text-sm font-medium transition-colors {values[
 						control.id
 					]
-						? 'bg-destructive text-destructive-foreground'
+						? 'text-destructive-foreground bg-destructive'
 						: 'bg-muted text-muted-foreground'}"
 				>
 					{values[control.id] ? 'Enabled' : 'Disabled'}

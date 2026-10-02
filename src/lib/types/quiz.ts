@@ -1,12 +1,5 @@
 export type MascotEmote =
-	| 'neutral'
-	| 'happy'
-	| 'correct'
-	| 'wrong'
-	| 'idea'
-	| 'confused'
-	| 'inspired'
-	| 'gloomy';
+	'neutral' | 'happy' | 'correct' | 'wrong' | 'idea' | 'confused' | 'inspired' | 'gloomy';
 
 export type MascotColor = 'blue' | 'pink' | 'green' | 'yellow';
 

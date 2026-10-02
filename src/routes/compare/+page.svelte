@@ -19,7 +19,8 @@
 		interp: string;
 		act: string;
 		link: string;
-		href: string;
+		/** If set, links to /sandbox/[theoryId]; otherwise links to the Theory Map. */
+		sandboxId?: string;
 	}
 
 	const MIN = 2;
@@ -42,7 +43,7 @@
 				'Studying may rarely be followed by a noticeable reward, while avoiding it brings immediate relief. Effort fades when it goes unreinforced.',
 			act: 'Make feedback quicker and more consistent: small goals, prompt results, and reinforcement for effort.',
 			link: 'Explore the interactive experience',
-			href: '/sandbox/operant-conditioning'
+			sandboxId: 'operant-conditioning'
 		},
 		{
 			id: 'fg',
@@ -56,7 +57,7 @@
 				'Material studied in one block may fade before the quiz, so it was learned but can’t be retrieved when needed.',
 			act: 'Spread short sessions across days and test yourself on earlier material before the quiz.',
 			link: 'Explore the interactive experience',
-			href: '/sandbox/ebbinghaus-curve'
+			sandboxId: 'ebbinghaus-curve'
 		},
 		{
 			id: 'cl',
@@ -69,14 +70,13 @@
 			interp:
 				'Quiz questions may ask for more than working memory can hold if the ideas aren’t yet organised into familiar patterns.',
 			act: 'Break content into smaller steps, remove distracting detail, and use worked examples.',
-			link: 'See it on the Theory Map',
-			href: resolveRoute('/map')
+			link: 'See it on the Theory Map'
 		}
 	];
 
 	let selectedScenarioId = $state('quiz');
 	let selectedTheoryIds = $state<string[]>(['op', 'fg']);
-	let hintMessage = $state('');
+	let hintMessage = $state(`Choose ${MIN} to ${MAX} perspectives. 2 selected.`);
 
 	let isScrolled = $state(false);
 	let isMobileOpen = $state(false);
@@ -85,9 +85,7 @@
 		scenarios.find((s) => s.id === selectedScenarioId) || scenarios[0]
 	);
 
-	let activeTheories = $derived(
-		theories.filter((t) => selectedTheoryIds.includes(t.id))
-	);
+	let activeTheories = $derived(theories.filter((t) => selectedTheoryIds.includes(t.id)));
 
 	function updateHint() {
 		hintMessage = `Choose ${MIN} to ${MAX} perspectives. ${selectedTheoryIds.length} selected.`;
@@ -102,46 +100,57 @@
 			} else {
 				hintMessage = `Keep at least ${MIN} perspectives to compare.`;
 			}
-		} else {
-			if (selectedTheoryIds.length < MAX) {
-				selectedTheoryIds = [...selectedTheoryIds, id];
-				updateHint();
-			}
+		} else if (selectedTheoryIds.length < MAX) {
+			selectedTheoryIds = [...selectedTheoryIds, id];
+			updateHint();
 		}
+	}
+
+	function hrefFor(theory: Theory): string {
+		return theory.sandboxId
+			? resolveRoute('/sandbox/[theoryId]', { theoryId: theory.sandboxId })
+			: resolveRoute('/map');
 	}
 
 	function toggleMobileMenu() {
 		isMobileOpen = !isMobileOpen;
 	}
 
-	onMount(() => {
-		updateHint();
+	function closeMobileMenu() {
+		isMobileOpen = false;
+	}
 
+	onMount(() => {
 		const handleScroll = () => {
 			isScrolled = window.scrollY > 20;
 		};
+		handleScroll();
 		window.addEventListener('scroll', handleScroll, { passive: true });
 
 		const rvElements = document.querySelectorAll('.rv');
+		let io: IntersectionObserver | undefined;
+
 		if ('IntersectionObserver' in window) {
-			const io = new IntersectionObserver(
+			const observer = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((x) => {
 						if (x.isIntersecting) {
 							x.target.classList.add('in');
-							io.unobserve(x.target);
+							observer.unobserve(x.target);
 						}
 					});
 				},
 				{ threshold: 0.1 }
 			);
-			rvElements.forEach((r) => io.observe(r));
+			io = observer;
+			rvElements.forEach((r) => observer.observe(r));
 		} else {
 			rvElements.forEach((r) => r.classList.add('in'));
 		}
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			io?.disconnect();
 		};
 	});
 </script>
@@ -151,34 +160,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
 		rel="stylesheet"
 	/>
 </svelte:head>
 
 <div class="theory-lab-theme">
-	<header id="hd" class:s={isScrolled} class:o={isMobileOpen}>
-		<div class="w nb">
-			<a class="logo" href={resolveRoute('/')}>Theory<i>Lab</i>.</a>
-			<button
-				class="mb"
-				id="mb"
-				aria-expanded={isMobileOpen}
-				aria-controls="nv"
-				onclick={toggleMobileMenu}
-			>
-				Menu
-			</button>
-			<nav id="nv" aria-label="Main">
-				<a href={resolveRoute('/')}>Home</a>
-				<a href="/sandbox">Explore</a>
-				<a href={resolveRoute('/map')}>Theory Map</a>
-				<a class="on" href={resolveRoute('/compare')} aria-current="page">Compare</a>
-				<a href="/#about">About</a>
-			</nav>
-			<a class="go" href="#s1">Get Started <span class="arr">→</span></a>
-		</div>
-	</header>
+
 
 	<main class="w">
 		<div class="intro">
@@ -219,7 +207,7 @@
 						disabled={isDisabled}
 						onclick={() => toggleTheory(theory.id)}
 					>
-						<i></i>
+						<i aria-hidden="true"></i>
 						<div>
 							<b>{theory.name}</b>
 							<span class="d">{theory.desc}</span>
@@ -236,7 +224,7 @@
 				<p class="lab" style="margin-bottom:10px">The scenario</p>
 				<p class="t" id="sct">“{currentScenario.text}”</p>
 			</div>
-			<div class="cols" id="cols" style="--n: {selectedTheoryIds.length}" aria-live="polite">
+			<div class="cols" id="cols" style="--n: {selectedTheoryIds.length}">
 				{#each activeTheories as theory (theory.id)}
 					<article class="col" style="--c: {theory.c}">
 						<h3>{theory.name}</h3>
@@ -247,7 +235,7 @@
 							<dt>Key constructs</dt>
 							<dd>
 								<ul class="k">
-									{#each theory.constructs as construct}
+									{#each theory.constructs as construct (construct)}
 										<li>{construct}</li>
 									{/each}
 								</ul>
@@ -264,7 +252,7 @@
 						</dl>
 						<div class="x">
 							<small>Explore this theory</small>
-							<a href={theory.href}>{theory.link} <span class="arr">→</span></a>
+							<a href={hrefFor(theory)}>{theory.link} <span class="arr">→</span></a>
 						</div>
 					</article>
 				{/each}
@@ -294,8 +282,12 @@
 	<section class="w fin">
 		<h2 class="rv">See a theory in action.</h2>
 		<div class="b rv">
-			<a class="btn" href="/sandbox">Explore the Sandboxes <span class="arr">→</span></a>
-			<a class="btn o" href={resolveRoute('/map')}>Explore the Theory Map <span class="arr">→</span></a>
+			<a class="btn" href={resolveRoute('/sandbox')}
+				>Explore the Sandboxes <span class="arr">→</span></a
+			>
+			<a class="btn o" href={resolveRoute('/map')}
+				>Explore the Theory Map <span class="arr">→</span></a
+			>
 		</div>
 	</section>
 
@@ -303,10 +295,10 @@
 		<div class="w">
 			<a class="logo" href={resolveRoute('/')}>Theory<i>Lab</i>.</a>
 			<nav aria-label="Footer">
-				<a href="/sandbox">Explore</a>
+				<a href={resolveRoute('/sandbox')}>Explore</a>
 				<a href={resolveRoute('/map')}>Theory Map</a>
 				<a href={resolveRoute('/compare')}>Compare</a>
-				<a href="/#about">About</a>
+				<a href={`${resolveRoute('/')}#about`}>About</a>
 			</nav>
 			<p>An interactive learning project exploring psychology and learning theories.</p>
 		</div>
@@ -363,7 +355,9 @@
 		text-decoration: none;
 	}
 
-	a:focus-visible {
+	a:focus-visible,
+	button:focus-visible,
+	select:focus-visible {
 		outline: 2px solid var(--rust);
 		outline-offset: 3px;
 	}
@@ -504,7 +498,7 @@
 
 	.btn {
 		background: var(--rust);
-		color: #fff;
+		color: var(--inv);
 		font-weight: 700;
 		padding: 17px 28px;
 		border-radius: 4px;
@@ -729,9 +723,8 @@
 	}
 
 	.col {
-		padding: 0 32px 0 0;
+		padding: 20px 32px 0 0;
 		border-top: 2px solid var(--c);
-		padding-top: 20px;
 		animation: fi 0.5s both;
 	}
 

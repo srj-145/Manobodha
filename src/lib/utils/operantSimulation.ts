@@ -2,7 +2,7 @@ import type { GraphDataPoint } from '$lib/types/theory';
 
 /**
  * Calculates authentic Operant Conditioning cumulative response curves.
- * 
+ *
  * Schedule Behaviors:
  * - Fixed Interval (FI): "Scallop" pattern — post-reinforcement pause followed by accelerating response rate.
  * - Variable Interval (VI): Moderate, steady, linear slope with no predictable pauses.
@@ -46,7 +46,7 @@ export function calculateOperantCumulativeRecord(
 					} else {
 						// Exponential acceleration as time limit approaches
 						const rateProb = Math.pow(progress, 3) * 2.8;
-						const responsesToAdd = Math.floor(rateProb) + (Math.random() < (rateProb % 1) ? 1 : 0);
+						const responsesToAdd = Math.floor(rateProb) + (Math.random() < rateProb % 1 ? 1 : 0);
 						totalResponses += responsesToAdd;
 					}
 					break;

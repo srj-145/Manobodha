@@ -93,7 +93,7 @@
 	</main>
 
 	<!-- Floating Mascot Assistant -->
-	<div class="fixed bottom-6 right-6">
+	<div class="fixed right-6 bottom-6">
 		<a href="{resolveRoute('/quiz')}?theory={theoryId}" class="group block">
 			<Mascot
 				emote="idea"
