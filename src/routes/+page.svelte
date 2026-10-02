@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let headerElement: HTMLElement | undefined = $state(undefined);
+	let headerElement = $state<HTMLElement | undefined>(undefined);
 	let mobileMenuOpen = $state(false);
 	let activeSection = $state('top');
 
@@ -504,40 +504,9 @@
 		transform: translateX(5px);
 	}
 
-	header {
-		position: sticky;
-		top: env(safe-area-inset-top, 0px);
-		z-index: 10;
-		transition: 0.25s;
-		border-bottom: 1px solid transparent;
-	}
 
-	:global(header.s) {
-		background: color-mix(in srgb, var(--bg) 85%, transparent);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		border-color: var(--line);
-	}
 
-	.nb {
-		display: flex;
-		align-items: center;
-		height: 80px;
-		transition: height 0.25s;
-	}
-	:global(header.s) .nb {
-		height: 58px;
-	}
 
-	.logo {
-		font:
-			400 23px Fraunces,
-			serif;
-		letter-spacing: -0.02em;
-	}
-	.logo i {
-		color: var(--rust);
-	}
 
 	nav {
 		margin-left: auto;
@@ -553,36 +522,12 @@
 		padding: 3px 0;
 		transition: 0.2s;
 	}
-	nav a:hover,
-	nav a.on {
+	nav a:hover {
 		color: var(--ink);
 		border-color: var(--rust);
 	}
 
-	.go {
-		margin-left: 32px;
-		font: 700 14px 'DM Sans';
-		padding: 10px 18px;
-		border: 1px solid var(--ink);
-		border-radius: 4px;
-		transition: 0.2s;
-	}
-	.go:hover {
-		background: var(--ink);
-		color: var(--inv);
-	}
 
-	.mb {
-		display: none;
-		margin-left: auto;
-		background: none;
-		border: 1px solid var(--line);
-		color: var(--ink);
-		border-radius: 4px;
-		padding: 10px 14px;
-		font: 600 14px 'DM Sans';
-		min-height: 44px;
-	}
 
 	.hero {
 		display: grid;
@@ -1105,32 +1050,8 @@
 			margin-top: 96px;
 			padding: 96px 0;
 		}
-		nav,
-		.go {
-			display: none;
-		}
-		.mb {
-			display: block;
-		}
 
-		:global(header.o) nav {
-			display: flex;
-			flex-direction: column;
-			position: absolute;
-			top: 100%;
-			left: 0;
-			right: 0;
-			background: var(--bg);
-			padding: 8px 22px 20px;
-			border-bottom: 1px solid var(--line);
-			gap: 0;
-		}
 
-		:global(header.o) nav a {
-			padding: 14px 0;
-			border-bottom: 1px solid var(--line);
-			font-size: 18px;
-		}
 
 		.hero,
 		.world {
