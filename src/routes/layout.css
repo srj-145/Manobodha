@@ -1,0 +1,95 @@
+/* ===== Manobodha shared tokens: paste at the END of src/routes/layout.css =====
+   One source of truth for colour, page width, gutters and section rhythm.
+   Every page and the Navbar read these, so spacing is identical everywhere. */
+
+:root {
+	--bg: #f7f4ee;
+	--ink: #172238;
+	--mut: #596177;
+	--line: #d8d4ca;
+	--rust: #b44f3b;
+	--sage: #6b7c69;
+	--blue: #566f8f;
+	--yel: #c9a04f;
+	--pap: #eeeae0;
+	--inv: #f7f4ee;
+
+	/* Theory Map categories (strokes need 3:1 contrast, so these differ slightly from the accents) */
+	--cat-learning: #172238;
+	--cat-behaviour: #b44f3b;
+	--cat-memory: #566f8f;
+	--cat-motivation: #a67c1f;
+	--cat-cognition: #5f7a5c;
+
+	/* Layout */
+	--nav-h: 64px;
+	--page-max: 1160px;
+	--page-max-wide: 1440px; /* Theory Map only */
+	--page-pad: 28px; /* side gutter */
+	--section-gap: 140px; /* space between major sections */
+
+	box-sizing: border-box;
+	padding-top: env(safe-area-inset-top, 0px);
+	padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--bg: #111826;
+		--ink: #ede8dc;
+		--mut: #a3aabb;
+		--line: #2b3446;
+		--rust: #e27e67;
+		--sage: #97aa95;
+		--blue: #8ca8cc;
+		--yel: #dfb866;
+		--pap: #182034;
+		--inv: #111826;
+		--cat-learning: #f4efe6;
+		--cat-behaviour: #e27e67;
+		--cat-memory: #8ca8cc;
+		--cat-motivation: #dfb866;
+		--cat-cognition: #97aa95;
+	}
+}
+
+@media (max-width: 900px) {
+	:root {
+		--page-pad: 22px;
+		--section-gap: 96px;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+}
+
+body {
+	margin: 0;
+	overflow-x: clip; /* no sideways page scroll, and sticky still works */
+	background: var(--bg);
+	color: var(--ink);
+	font:
+		400 17px/1.65 'DM Sans',
+		system-ui,
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+	outline: 2px solid var(--rust);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}

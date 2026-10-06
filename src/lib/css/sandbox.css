@@ -1,0 +1,339 @@
+/* Sandbox pages (Operant Conditioning + Forgetting Curve). Prefixed .sb- to avoid collisions. Uses the global tokens in layout.css. */
+.sb {
+	max-width: var(--page-max);
+	margin: 0 auto;
+	padding: 40px var(--page-pad) 96px;
+	display: grid;
+	gap: 28px;
+}
+.sb h1,
+.sb h2,
+.sb h3 {
+	font-family: Fraunces, Georgia, serif;
+	font-weight: 300;
+	letter-spacing: -0.025em;
+	margin: 0;
+}
+.sb a {
+	color: inherit;
+	text-decoration: none;
+}
+.sb-lab {
+	margin: 0 0 18px;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font: 700 12px/1 'DM Sans', sans-serif;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--mut);
+}
+.sb-lab::before {
+	content: '';
+	width: 28px;
+	border-top: 1px solid var(--rust);
+}
+.sb-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 24px;
+	padding-bottom: 8px;
+}
+.sb-head h1 {
+	font-size: clamp(38px, 5.5vw, 68px);
+	line-height: 1;
+	margin-bottom: 14px;
+}
+.sb-head em,
+.sb h2 em {
+	font-style: italic;
+	color: var(--rust);
+}
+.sb-lede {
+	max-width: 56ch;
+	margin: 0;
+	color: var(--mut);
+}
+.sb-btns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.sb-btn {
+	display: inline-flex;
+	align-items: center;
+	min-height: 48px;
+	padding: 0 22px;
+	font-weight: 700;
+	font-size: 15px;
+	border-radius: 4px;
+	background: var(--rust);
+	color: #fff !important;
+	transition: 0.2s;
+}
+.sb-btn:hover {
+	background: var(--ink);
+	color: var(--inv) !important;
+}
+.sb-btn.ghost {
+	background: transparent;
+	color: var(--ink) !important;
+	box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.sb-btn.ghost:hover {
+	background: var(--ink);
+	color: var(--inv) !important;
+}
+.sb-card {
+	background: var(--pap);
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	padding: 22px;
+	min-width: 0;
+}
+.sb-card > h2 {
+	font-size: 22px;
+	margin-bottom: 14px;
+}
+.sb-work {
+	display: grid;
+	grid-template-columns: 330px 1fr;
+	gap: 28px;
+	align-items: start;
+}
+.sb-stack {
+	display: grid;
+	gap: 28px;
+	min-width: 0;
+}
+.sb-stage {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+	gap: 24px;
+	align-items: center;
+}
+.sb-stats {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+.sb-stat {
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	padding: 12px 14px;
+}
+.sb-stat b {
+	display: block;
+	font: 400 30px/1.1 Fraunces, Georgia, serif;
+	letter-spacing: -0.02em;
+	font-variant-numeric: tabular-nums;
+}
+.sb-stat span {
+	font: 700 11px/1.3 'DM Sans', sans-serif;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--mut);
+}
+.sb-sec h2 {
+	font-size: clamp(30px, 3.6vw, 44px);
+	line-height: 1.08;
+	margin-bottom: 12px;
+}
+.sb-sec > p.sb-lede {
+	margin-bottom: 26px;
+}
+.sb-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 16px;
+}
+.sb-cards .sb-card {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.sb-cards h3 {
+	font-size: 21px;
+	line-height: 1.2;
+}
+.sb-cards p {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.55;
+	color: var(--mut);
+}
+.sb-tag {
+	align-self: flex-start;
+	font: 700 12px/1 ui-monospace, Menlo, monospace;
+	padding: 6px 8px;
+	border-radius: 4px;
+	color: var(--bg);
+	background: var(--ink);
+}
+.sb-tag.sage { background: var(--sage); }
+.sb-tag.blue { background: var(--blue); }
+.sb-tag.rust { background: var(--rust); }
+.sb-tag.yel { background: var(--yel); color: #172238; }
+.sb-eg {
+	margin-top: auto !important;
+	padding-top: 10px;
+	border-top: 1px dashed var(--line);
+	color: var(--ink) !important;
+}
+.sb-eg b {
+	color: var(--rust);
+}
+.sb-mini {
+	width: 100%;
+	height: 56px;
+	fill: none;
+	stroke: var(--rust);
+	stroke-width: 2.4;
+	stroke-linecap: round;
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	padding: 6px;
+}
+.sb-try {
+	margin-top: 4px;
+	min-height: 44px;
+	font: 700 14px 'DM Sans', sans-serif;
+	color: var(--ink);
+	background: transparent;
+	border: 1.5px solid var(--ink);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+.sb-try:hover {
+	background: var(--ink);
+	color: var(--inv);
+}
+.sb-eq {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 28px;
+	align-items: center;
+}
+.sb-eq .big {
+	font: italic 300 clamp(40px, 6vw, 72px)/1 Fraunces, Georgia, serif;
+	color: var(--rust);
+	white-space: nowrap;
+}
+.sb-eq dl {
+	margin: 0;
+	display: grid;
+	gap: 8px;
+}
+.sb-eq dt {
+	font-weight: 700;
+	font-family: Fraunces, Georgia, serif;
+	font-style: italic;
+	display: inline;
+	color: var(--ink);
+}
+.sb-eq dd {
+	display: inline;
+	margin: 0;
+	color: var(--mut);
+	font-size: 15px;
+}
+.sb-eq dl div {
+	line-height: 1.5;
+}
+.sb-cta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 32px;
+	background: var(--ink);
+	color: var(--inv);
+	border-radius: 6px;
+}
+.sb-cta h2 {
+	font-size: 30px;
+}
+.sb-cta p {
+	margin: 6px 0 0;
+	opacity: 0.8;
+}
+.sb-cta .sb-btn {
+	background: var(--rust);
+	color: #fff !important;
+}
+.sb-cta .sb-btn:hover {
+	background: var(--inv);
+	color: var(--ink) !important;
+}
+.sb-flow {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 14px;
+	list-style: none;
+	padding: 0;
+	font-size: 12.5px;
+}
+.sb-flow li {
+	flex: 1;
+	text-align: center;
+	padding: 9px 6px;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	background: var(--bg);
+	color: var(--mut);
+	font-weight: 600;
+	line-height: 1.2;
+	transition:
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s;
+}
+.sb-flow li.on {
+	background: var(--rust);
+	border-color: var(--rust);
+	color: #fff;
+}
+.sb-flow li.cue {
+	border-color: var(--yel);
+	color: var(--ink);
+}
+.sb-flow i {
+	font-style: normal;
+	color: var(--mut);
+}
+@media (max-width: 960px) {
+	.sb-work {
+		grid-template-columns: 1fr;
+	}
+	.sb-stage {
+		grid-template-columns: 1fr;
+	}
+}
+@media (max-width: 640px) {
+	.sb {
+		padding-top: 24px;
+		gap: 22px;
+	}
+	.sb-card {
+		padding: 16px;
+	}
+	.sb-eq {
+		grid-template-columns: 1fr;
+	}
+	.sb-flow {
+		font-size: 11.5px;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.sb * {
+		transition: none !important;
+	}
+}
