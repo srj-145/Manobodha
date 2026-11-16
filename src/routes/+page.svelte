@@ -397,67 +397,9 @@
 	</section>
 </main>
 
-<footer>
-	<div class="w">
-		<a class="logo" href="#top">Manobodha<i>.</i></a>
-		<nav aria-label="Footer">
-			<a href="#start">Explore</a>
-			<a href="/map">Theory Map</a>
-			<a href="/compare">Compare</a>
-			<a href="#who">About</a>
-		</nav>
-		<p>An interactive learning project exploring psychology and learning theories.</p>
-	</div>
-</footer>
+
 
 <style>
-	:global(:root) {
-		--bg: #f7f4ee;
-		--ink: #172238;
-		--mut: #596177;
-		--line: #d8d4ca;
-		--rust: #b44f3b;
-		--sage: #6b7c69;
-		--blue: #566f8f;
-		--yel: #c9a04f;
-		--pap: #eeeae0;
-		--inv: #f7f4ee;
-		box-sizing: border-box;
-		padding-top: env(safe-area-inset-top, 0px);
-		padding-bottom: env(safe-area-inset-bottom, 0px);
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:global(:root:not([data-theme='light'])) {
-			--bg: #111826;
-			--ink: #ede8dc;
-			--mut: #a3aabb;
-			--line: #2b3446;
-			--rust: #e27e67;
-			--sage: #97aa95;
-			--blue: #8ca8cc;
-			--yel: #dfb866;
-			--pap: #182034;
-			--inv: #111826;
-		}
-	}
-
-	:global(html) {
-		scroll-behavior: smooth;
-		scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
-	}
-
-	:global(body) {
-		margin: 0;
-		background: var(--bg);
-		color: var(--ink);
-		font:
-			400 17px/1.65 'DM Sans',
-			system-ui,
-			sans-serif;
-		-webkit-font-smoothing: antialiased;
-	}
-
 	a {
 		color: inherit;
 		text-decoration: none;
@@ -471,15 +413,15 @@
 	h1,
 	h2,
 	h3 {
-		font-family: Fraunces, Georgia, serif;
-		font-weight: 300;
-		letter-spacing: -0.025em;
+		font-family: var(--font-serif, Fraunces, Georgia, serif);
+		font-weight: 400;
+		letter-spacing: -0.02em;
 	}
 
 	.w {
-		max-width: 1160px;
+		max-width: var(--page-max, 1160px);
 		margin: 0 auto;
-		padding: 0 28px;
+		padding: 0 var(--page-pad, 28px);
 	}
 
 	.lab {
@@ -516,24 +458,7 @@
 
 
 
-	nav {
-		margin-left: auto;
-		display: flex;
-		gap: 30px;
-		font-size: 15px;
-		font-weight: 500;
-	}
 
-	nav a {
-		color: var(--mut);
-		border-bottom: 1.5px solid transparent;
-		padding: 3px 0;
-		transition: 0.2s;
-	}
-	nav a:hover {
-		color: var(--ink);
-		border-color: var(--rust);
-	}
 
 
 
@@ -651,7 +576,7 @@
 	}
 
 	section {
-		padding: 140px 0 0;
+		padding: clamp(64px, 7vw, var(--section-gap, 120px)) 0 0;
 	}
 
 	h2 {
@@ -751,8 +676,8 @@
 
 	.tr {
 		background: var(--pap);
-		margin-top: 140px;
-		padding: 140px 0;
+		margin-top: clamp(64px, 7vw, var(--section-gap, 120px));
+		padding: clamp(64px, 7vw, var(--section-gap, 120px)) 0;
 		border-block: 1px solid var(--line);
 	}
 	.tr section {
@@ -1027,30 +952,7 @@
 		font-size: 15px;
 	}
 
-	footer {
-		border-top: 1px solid var(--line);
-		padding: 40px 0 56px;
-		color: var(--mut);
-		font-size: 15px;
-	}
 
-	footer .w {
-		display: flex;
-		justify-content: space-between;
-		gap: 24px;
-		flex-wrap: wrap;
-	}
-
-	footer nav {
-		margin: 0;
-		gap: 24px;
-	}
-
-	footer p {
-		width: 100%;
-		margin: 8px 0 0;
-		font-size: 14px;
-	}
 
 	.rv {
 		opacity: 0;

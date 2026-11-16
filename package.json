@@ -4,6 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"view:users": "node view_users.mjs",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",

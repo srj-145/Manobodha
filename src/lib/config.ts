@@ -18,5 +18,12 @@ export const publicPaths = [
 	'/compare',
 	'/quiz',
 	'/about',
+<<<<<<< HEAD
 	'/privacy'
+=======
+	'/privacy',
+	'/terms',
+	'/login',
+	'/register'
+>>>>>>> 4674086 (feat: prepare website for deployment)
 ];

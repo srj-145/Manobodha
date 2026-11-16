@@ -24,7 +24,8 @@
 			title: 'About',
 			links: [
 				{ label: 'About Manobodha', href: '/about' },
-				{ label: 'Privacy', href: '/privacy' }
+				{ label: 'Privacy', href: '/privacy' },
+				{ label: 'Terms & Conditions', href: '/terms' }
 			]
 		}
 	];

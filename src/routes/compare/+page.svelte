@@ -124,7 +124,7 @@
 		</div>
 
 		{#if mode === 'theories'}
-			<section id="panel-t" role="tabpanel" aria-labelledby="tab-t">
+			<section id="panel-t" aria-labelledby="tab-t">
 				<div class="pick">
 					<label for="tsearch">Add {MIN} to {MAX} theories</label>
 					<ul class="chips" aria-label="Selected theories">
@@ -234,7 +234,7 @@
 				{/if}
 			</section>
 		{:else}
-			<section id="panel-s" role="tabpanel" aria-labelledby="tab-s">
+			<section id="panel-s" aria-labelledby="tab-s">
 				<div class="sel">
 					<label for="scn">Select a situation</label>
 					<select id="scn" bind:value={scenarioId}>
@@ -285,22 +285,22 @@
 
 <style>
 	.app {
-		--bg: #111826;
-		--ink: #ede8dc;
-		--mut: #a3aabb;
-		--line: #2b3446;
-		--rust: #e27e67;
-		--pap: #182034;
-		--inv: #111826;
-		--l: 68%;
-		--s: 45%;
+		--l: 36%;
+		--s: 55%;
 		box-sizing: border-box;
 		background: var(--bg);
 		color: var(--ink);
-		font: 400 17px/1.65 'DM Sans', system-ui, sans-serif;
+		font: 400 16.5px/1.65 var(--font-sans, 'DM Sans', system-ui, sans-serif);
 		min-height: 100%;
 		padding-top: env(safe-area-inset-top, 0px);
 		padding-bottom: env(safe-area-inset-bottom, 0px);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.app {
+			--l: 68%;
+			--s: 45%;
+		}
 	}
 	.th {
 		--c: hsl(var(--h) var(--s) var(--l));
@@ -322,9 +322,9 @@
 	}
 	h1,
 	h3 {
-		font-family: Fraunces, Georgia, serif;
-		font-weight: 300;
-		letter-spacing: -0.025em;
+		font-family: var(--font-serif, Fraunces, Georgia, serif);
+		font-weight: 400;
+		letter-spacing: -0.02em;
 	}
 	.w {
 		max-width: 1160px;

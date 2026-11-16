@@ -3,6 +3,12 @@
 	import { page } from '$app/state';
 	import { resolveRoute } from '$app/paths';
 
+<<<<<<< HEAD
+=======
+	// User prop passed from +layout.svelte
+	let { user } = $props<{ user?: { name: string; email: string; user_type?: string; isAdmin?: boolean } | null }>();
+
+>>>>>>> 4674086 (feat: prepare website for deployment)
 	const main = [
 		{ href: '/', label: 'Home' },
 		{ href: '/sandbox', label: 'Sandboxes' },
@@ -53,8 +59,46 @@
 		</nav>
 
 		<div class="end">
+<<<<<<< HEAD
 			<a class="quiet" href={resolveRoute(quiz.href)} aria-current={current(quiz.href)}>{quiz.label}</a>
 			<a class="pill" href={resolveRoute(explore.href)} aria-current={current(explore.href)}>{explore.label}</a>
+=======
+			<a class="quiet" href={resolveRoute(quiz.href)} aria-current={current(quiz.href)}
+				>{quiz.label}</a
+			>
+			<a class="pill" href={resolveRoute(explore.href)} aria-current={current(explore.href)}
+				>{explore.label}</a
+			>
+
+			<!-- Auth section -->
+			{#if user}
+				<div class="auth-group">
+					{#if user.isAdmin}
+						<a
+							href={resolveRoute('/admin')}
+							class="auth-admin"
+							aria-current={current('/admin')}
+							title="Creator & Evaluation Console"
+						>
+							Admin ✦
+						</a>
+					{/if}
+					<a
+						href={resolveRoute('/profile')}
+						class="auth-name"
+						aria-current={current('/profile')}
+						title="Your account"
+					>
+						{user.name.split(' ')[0]}
+					</a>
+					<a href="/logout" class="auth-logout">Sign out</a>
+				</div>
+			{:else}
+				<a href={resolveRoute('/login')} class="auth-signin" aria-current={current('/login')}>
+					Sign in
+				</a>
+			{/if}
+>>>>>>> 4674086 (feat: prepare website for deployment)
 		</div>
 
 		<button
@@ -81,6 +125,44 @@
 			{#each all as l (l.href)}
 				<a href={resolveRoute(l.href)} aria-current={current(l.href)} onclick={() => (open = false)}>{l.label}</a>
 			{/each}
+<<<<<<< HEAD
+=======
+			<a
+				href={resolveRoute(quiz.href)}
+				aria-current={current(quiz.href)}
+				onclick={() => (open = false)}>{quiz.label}</a
+			>
+			<a
+				href={resolveRoute(explore.href)}
+				aria-current={current(explore.href)}
+				onclick={() => (open = false)}>{explore.label}</a
+			>
+			<div class="sheet-divider"></div>
+			{#if user}
+				{#if user.isAdmin}
+					<a
+						href={resolveRoute('/admin')}
+						class="sheet-admin"
+						aria-current={current('/admin')}
+						onclick={() => (open = false)}
+					>
+						Admin Console ✦
+					</a>
+				{/if}
+				<a href={resolveRoute('/profile')} onclick={() => (open = false)}>Account ({user.name})</a>
+				<a href="/logout" class="sheet-logout" onclick={() => (open = false)}>Sign out</a>
+			{:else}
+				<a href={resolveRoute('/login')} aria-current={current('/login')} onclick={() => (open = false)}
+					>Sign in</a
+				>
+				<a
+					href={resolveRoute('/register')}
+					class="sheet-register"
+					aria-current={current('/register')}
+					onclick={() => (open = false)}>Create account</a
+				>
+			{/if}
+>>>>>>> 4674086 (feat: prepare website for deployment)
 		</nav>
 	{/if}
 </header>
@@ -173,6 +255,79 @@
 		color: #fff;
 	}
 
+<<<<<<< HEAD
+=======
+	/* Auth elements */
+	.auth-group {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		margin-left: 4px;
+	}
+
+	.auth-admin {
+		padding: 5px 10px;
+		border-radius: 6px;
+		font: 600 12.5px/1.4 'DM Sans', system-ui, sans-serif;
+		color: var(--rust);
+		background: color-mix(in srgb, var(--rust) 10%, transparent);
+		border: 1px solid color-mix(in srgb, var(--rust) 25%, transparent);
+		text-decoration: none;
+		transition: background-color 0.15s, color 0.15s;
+		letter-spacing: 0.02em;
+	}
+	.auth-admin:hover,
+	.auth-admin[aria-current='page'] {
+		background: var(--rust);
+		color: #fff;
+	}
+
+	.auth-name {
+		padding: 7px 12px;
+		border-radius: 6px;
+		font: 500 14px/20px 'DM Sans', system-ui, sans-serif;
+		color: var(--ink);
+		text-decoration: none;
+		border: 1px solid var(--line);
+		transition: background-color 0.15s, border-color 0.15s;
+		max-width: 120px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.auth-name:hover,
+	.auth-name[aria-current='page'] {
+		background: color-mix(in srgb, var(--ink) 7%, transparent);
+		border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+	}
+
+	.auth-logout {
+		padding: 7px 12px;
+		border-radius: 6px;
+		font: 500 14px/20px 'DM Sans', system-ui, sans-serif;
+		color: var(--mut);
+		text-decoration: none;
+		transition: color 0.15s;
+	}
+	.auth-logout:hover {
+		color: var(--rust);
+	}
+
+	.auth-signin {
+		padding: 8px 14px;
+		border-radius: 6px;
+		font: 600 14px/20px 'DM Sans', system-ui, sans-serif;
+		color: var(--bg);
+		background: var(--ink);
+		text-decoration: none;
+		transition: background-color 0.15s;
+		margin-left: 4px;
+	}
+	.auth-signin:hover {
+		background: var(--rust);
+	}
+
+>>>>>>> 4674086 (feat: prepare website for deployment)
 	.burger {
 		display: none;
 		margin-left: auto;
@@ -216,6 +371,7 @@
 	}
 	.sheet a[aria-current='page'] {
 		color: var(--ink);
+<<<<<<< HEAD
 		box-shadow: inset 3px 0 0 var(--rust);
 		padding-left: 14px;
 	}
@@ -229,15 +385,51 @@
 	@media (max-width: 860px) {
 		.main,
 		.end {
+=======
+		background: color-mix(in srgb, var(--ink) 5%, transparent);
+	}
+	.sheet-divider {
+		height: 1px;
+		background: var(--line);
+		margin: 8px var(--page-pad);
+	}
+	.sheet-admin {
+		color: var(--rust) !important;
+		font-weight: 600 !important;
+	}
+	.sheet-logout {
+		color: var(--mut) !important;
+	}
+	.sheet-logout:hover {
+		color: var(--rust) !important;
+	}
+	.sheet-register {
+		font-weight: 600 !important;
+		color: var(--ink) !important;
+	}
+
+	@media (max-width: 840px) {
+		.main {
+			display: none;
+		}
+		.end .quiet,
+		.end .pill,
+		.end .auth-group,
+		.end .auth-signin {
+>>>>>>> 4674086 (feat: prepare website for deployment)
 			display: none;
 		}
 		.burger {
 			display: flex;
 		}
 	}
+<<<<<<< HEAD
 	@media (prefers-reduced-motion: reduce) {
 		* {
 			transition: none !important;
 		}
 	}
 </style>
+=======
+</style>
+>>>>>>> 4674086 (feat: prepare website for deployment)

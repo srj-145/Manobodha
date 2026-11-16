@@ -699,7 +699,7 @@ svg.addEventListener('touchend', (e: TouchEvent) => {
  }
 
 
- h1, h2, h3 {
+ h1, h2 {
    font-family: Newsreader, Georgia, serif;
    font-weight: 400;
    margin: 0;
@@ -722,83 +722,7 @@ svg.addEventListener('touchend', (e: TouchEvent) => {
  }
 
 
- nav {
-   position: sticky;
-   top: env(safe-area-inset-top, 0px);
-   z-index: 20;
-   height: 56px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 0 clamp(16px, 3vw, 40px);
-   background: var(--bg);
-   border-bottom: 1px solid var(--line);
- }
 
-
- .logo {
-   font-family: Newsreader, Georgia, serif;
-   font-size: 21px;
- }
-
-
- .logo i {
-   color: var(--terra);
-   font-style: normal;
- }
-
-
- .links {
-   display: flex;
-   gap: clamp(12px, 2vw, 28px);
-   font-size: 13.5px;
-   color: var(--mute);
- }
-
-
- .links a {
-   padding: 4px 0;
-   border-bottom: 1px solid transparent;
-   transition: color 0.2s, border-color 0.2s;
- }
-
-
- .links a.cur {
-   color: var(--ink);
-   border-color: var(--terra);
- }
-
-
- .links a:hover {
-   color: var(--ink);
- }
-
-
- .cta {
-   font-size: 13px;
-   border: 1px solid var(--ink);
-   padding: 7px 14px;
-   border-radius: 2px;
-   white-space: nowrap;
-   transition: background 0.2s, color 0.2s;
- }
-
-
- .cta:hover {
-   background: var(--ink);
-   color: var(--bg);
- }
-
-
- @media (max-width: 700px) {
-   .links a:not(.cur) {
-     display: none;
-   }
-   .links {
-     flex: 1;
-     justify-content: center;
-   }
- }
 
 
  .zone1 {

@@ -263,40 +263,12 @@
 
 <style>
 	.theory-lab-theme {
-		--bg: #f7f4ee;
-		--ink: #172238;
-		--mut: #596177;
-		--line: #d8d4ca;
-		--rust: #b44f3b;
-		--sage: #6b7c69;
-		--blue: #566f8f;
-		--yel: #c9a04f;
-		--pap: #eeeae0;
-		--inv: #f7f4ee;
 		box-sizing: border-box;
 		background: var(--bg);
 		color: var(--ink);
-		font:
-			400 17px/1.65 'DM Sans',
-			system-ui,
-			sans-serif;
+		font: 400 16.5px/1.65 var(--font-sans, 'DM Sans', system-ui, sans-serif);
 		min-height: 100vh;
 		-webkit-font-smoothing: antialiased;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.theory-lab-theme {
-			--bg: #111826;
-			--ink: #ede8dc;
-			--mut: #a3aabb;
-			--line: #2b3446;
-			--rust: #e27e67;
-			--sage: #97aa95;
-			--blue: #8ca8cc;
-			--yel: #dfb866;
-			--pap: #182034;
-			--inv: #111826;
-		}
 	}
 
 	:global(html) {
@@ -317,9 +289,9 @@
 	h1,
 	h2,
 	h3 {
-		font-family: Fraunces, Georgia, serif;
-		font-weight: 300;
-		letter-spacing: -0.025em;
+		font-family: var(--font-serif, Fraunces, Georgia, serif);
+		font-weight: 400;
+		letter-spacing: -0.02em;
 	}
 
 	.w {
