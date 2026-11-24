@@ -1,0 +1,68 @@
+<script lang="ts">
+	import DocPage from '$lib/components/ui/DocPage.svelte';
+</script>
+
+<svelte:head>
+	<title>Terms & Conditions – Manobodha</title>
+	<meta
+		name="description"
+		content="Terms & Conditions for Manobodha: open educational licence, anonymous interaction data, and audience evaluation."
+	/>
+</svelte:head>
+
+<DocPage
+	eyebrow="Legal & Ethics"
+	title="Terms & Conditions."
+	lede="Manobodha is an open, non-commercial educational capstone project. We believe in total clarity about our software licence and how user data is treated."
+>
+	<h2>1. Open Educational Licence</h2>
+	<p>
+		Manobodha is provided freely for educational and personal exploration under the
+		<strong>MIT Licence</strong>. You are welcome to explore all theory sandboxes, interact with
+		simulations, and test your understanding at no charge. The software is provided “as is”, without
+		warranty of any kind.
+	</p>
+
+	<h2>2. Anonymous Data & Educational Research</h2>
+	<p>
+		This platform is built as an engineering capstone project at <strong>VIT Bhopal University</strong>.
+		Its primary goal is to study whether interactive theory sandboxes help learners build stronger mental
+		models of psychology theories compared to static text.
+	</p>
+	<p>
+		To evaluate this research question, we record high-level learning interactions (such as opening a sandbox,
+		completing a quiz, or recording confidence ratings). <strong>All interaction data remains strictly anonymous</strong>
+		and is examined exclusively in aggregate form.
+	</p>
+
+	<h2>3. How Background Data is Used</h2>
+	<p>
+		During registration, we ask a few multiple-choice questions about your academic background,
+		psychology familiarity, and learning goals.
+	</p>
+	<ul>
+		<li><strong>We only use this background section</strong> to understand learner demographics (e.g. 1st vs 2nd-year psychology students vs enthusiasts) and assess which groups benefit most from interactive visualizations.</li>
+		<li>We do <strong>not</strong> collect phone numbers, postal addresses, psychological diagnoses, or mental health data.</li>
+		<li>We never sell, monetize, or disclose your information to advertisers, data brokers, or third parties.</li>
+	</ul>
+
+	<h2>4. No Intrusive Tracking</h2>
+	<p>
+		We do not record your mouse movements, clicks on unrelated elements, keystrokes, or screen recordings.
+		Evaluation is focused on learning outcomes—not digital surveillance.
+	</p>
+
+	<h2>5. Account & Data Ownership</h2>
+	<p>
+		You can update your display name or audience responses at any time from your
+		<a href="/profile">Profile page</a>. If you wish to delete your account and associated records,
+		you can contact the project creators.
+	</p>
+
+	<h2>6. Academic Integrity & Acceptance</h2>
+	<p>
+		By creating an account or continuing to use Manobodha, you agree to these Terms & Conditions.
+		For more specific technical details about session cookies and authentication, see our
+		<a href="/privacy">Privacy page →</a>.
+	</p>
+</DocPage>
