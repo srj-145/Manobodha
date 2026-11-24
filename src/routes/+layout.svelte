@@ -24,13 +24,6 @@ let { data, children }: { data?: { user?: NavUser | null }; children: Snippet } 
 	import { page, navigating } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import Navbar from './navbar.svelte';
-	
-
-/*<<<<<<< HEAD
-	let { children } = $props();
-=======
->>>>>>> 1e2e615 (chore: initialize new  repository)*/
-	//let { data, children } = $props();
 
 
 	// The Theory Map is a full-viewport tool, so it skips the footer.

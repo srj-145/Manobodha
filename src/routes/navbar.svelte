@@ -1,9 +1,21 @@
-
 <!-- src/lib/components/ui/Navbar.svelte -->
 <script lang="ts">
 	import { page } from '$app/state';
 	import { resolveRoute } from '$app/paths';
-	let { user } = $props();
+
+	// User prop passed from +layout.svelte
+	let {
+		user
+	} = $props<{
+		user?: {
+			id?: string;
+			name: string;
+			email?: string;
+			user_type?: string;
+			isAdmin?: boolean;
+		} | null;
+	}>();
+
 	const main = [
 		{ href: '/', label: 'Home' },
 		{ href: '/sandbox', label: 'Sandboxes' },
@@ -56,6 +68,35 @@
 		<div class="end">
 			<a class="quiet" href={resolveRoute(quiz.href)} aria-current={current(quiz.href)}>{quiz.label}</a>
 			<a class="pill" href={resolveRoute(explore.href)} aria-current={current(explore.href)}>{explore.label}</a>
+
+			<!-- Auth section -->
+			{#if user}
+				<div class="auth-group">
+					{#if user.isAdmin}
+						<a
+							href={resolveRoute('/admin')}
+							class="auth-admin"
+							aria-current={current('/admin')}
+							title="Creator & Evaluation Console"
+						>
+							Admin ✦
+						</a>
+					{/if}
+					<a
+						href={resolveRoute('/profile')}
+						class="auth-name"
+						aria-current={current('/profile')}
+						title="Your account"
+					>
+						{user.name.split(' ')[0]}
+					</a>
+					<a href="/logout" class="auth-logout">Sign out</a>
+				</div>
+			{:else}
+				<a href={resolveRoute('/login')} class="auth-signin" aria-current={current('/login')}>
+					Sign in
+				</a>
+			{/if}
 		</div>
 
 		<button
@@ -82,52 +123,31 @@
 			{#each all as l (l.href)}
 				<a href={resolveRoute(l.href)} aria-current={current(l.href)} onclick={() => (open = false)}>{l.label}</a>
 			{/each}
+			<div class="sheet-divider"></div>
+			{#if user}
+				{#if user.isAdmin}
+					<a
+						href={resolveRoute('/admin')}
+						class="sheet-admin"
+						aria-current={current('/admin')}
+						onclick={() => (open = false)}
+					>
+						Admin Console ✦
+					</a>
+				{/if}
+				<a href={resolveRoute('/profile')} onclick={() => (open = false)}>Account ({user.name})</a>
+				<a href="/logout" class="sheet-logout" onclick={() => (open = false)}>Sign out</a>
+			{:else}
+				<a href={resolveRoute('/login')} aria-current={current('/login')} onclick={() => (open = false)}>Sign in</a>
+				<a
+					href={resolveRoute('/register')}
+					class="sheet-register"
+					aria-current={current('/register')}
+					onclick={() => (open = false)}>Create account</a
+				>
+			{/if}
 		</nav>
 	{/if}
-</header>
-
-
-<header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
-	<div class="max-w-7xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
-		<a href="/" class="font-bold text-lg text-white tracking-tight">
-			Manobodha
-		</a>
-
-		<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-			<a href="/explore" class="hover:text-indigo-400 transition-colors">Explore</a>
-			<a href="/map" class="hover:text-indigo-400 transition-colors">Theory Map</a>
-			<a href="/compare" class="hover:text-indigo-400 transition-colors">Compare</a>
-			<a href="/quiz" class="hover:text-indigo-400 transition-colors">Quiz</a>
-		</nav>
-
-		<div class="flex items-center gap-4">
-			{#if user}
-				<span class="text-xs font-medium text-slate-300 hidden sm:inline">
-					Hi, {user.name}
-				</span>
-				<a
-					href="/profile"
-					class="text-xs px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 transition-colors"
-				>
-					Profile
-				</a>
-				<a
-					href="/logout"
-					class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition-colors"
-				>
-					Logout
-				</a>
-			{:else}
-				<a
-					href="/login"
-					class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors shadow-sm"
-				>
-					Sign In / Register
-				</a>
-			{/if}
-		</div>
-	</div>
-
 </header>
 
 <style>
@@ -218,7 +238,6 @@
 		color: #fff;
 	}
 
-
 	/* Auth elements */
 	.auth-group {
 		display: flex;
@@ -289,7 +308,6 @@
 		background: var(--rust);
 	}
 
-
 	.burger {
 		display: none;
 		margin-left: auto;
@@ -333,7 +351,6 @@
 	}
 	.sheet a[aria-current='page'] {
 		color: var(--ink);
-
 		background: color-mix(in srgb, var(--ink) 5%, transparent);
 	}
 	.sheet-divider {
@@ -355,32 +372,31 @@
 		font-weight: 600 !important;
 		color: var(--ink) !important;
 	}
-			/*display: none;
-		
+
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--rust);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 840px) {
+		.main {
+			display: none;
+		}
+		.end .quiet,
+		.end .pill,
+		.end .auth-group,
+		.end .auth-signin {
+			display: none;
+		}
 		.burger {
 			display: flex;
 		}
-	
-/* <-- closes @media (max-width: 860px) from line 261 */
-@media (max-width: 840px) {
-	.main {
-		display: none;
 	}
-	.end .quiet,
-	.end .pill,
-	.end .auth-group,
-	.end .auth-signin {
-		display: none;
-	}
-	.burger {
-		display: flex;
-	}
-}
 
-@media (prefers-reduced-motion: reduce) {
-	* {
-		transition: none !important;
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			transition: none !important;
+		}
 	}
-}
 </style>
-
