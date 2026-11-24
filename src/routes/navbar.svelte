@@ -1,15 +1,9 @@
-<<<<<<< HEAD
+
 <!-- src/lib/components/ui/Navbar.svelte -->
 <script lang="ts">
 	import { page } from '$app/state';
 	import { resolveRoute } from '$app/paths';
-
-<<<<<<< HEAD
-=======
-	// User prop passed from +layout.svelte
-	let { user } = $props<{ user?: { name: string; email: string; user_type?: string; isAdmin?: boolean } | null }>();
-
->>>>>>> 4674086 (feat: prepare website for deployment)
+	let { user } = $props();
 	const main = [
 		{ href: '/', label: 'Home' },
 		{ href: '/sandbox', label: 'Sandboxes' },
@@ -60,46 +54,8 @@
 		</nav>
 
 		<div class="end">
-<<<<<<< HEAD
 			<a class="quiet" href={resolveRoute(quiz.href)} aria-current={current(quiz.href)}>{quiz.label}</a>
 			<a class="pill" href={resolveRoute(explore.href)} aria-current={current(explore.href)}>{explore.label}</a>
-=======
-			<a class="quiet" href={resolveRoute(quiz.href)} aria-current={current(quiz.href)}
-				>{quiz.label}</a
-			>
-			<a class="pill" href={resolveRoute(explore.href)} aria-current={current(explore.href)}
-				>{explore.label}</a
-			>
-
-			<!-- Auth section -->
-			{#if user}
-				<div class="auth-group">
-					{#if user.isAdmin}
-						<a
-							href={resolveRoute('/admin')}
-							class="auth-admin"
-							aria-current={current('/admin')}
-							title="Creator & Evaluation Console"
-						>
-							Admin ✦
-						</a>
-					{/if}
-					<a
-						href={resolveRoute('/profile')}
-						class="auth-name"
-						aria-current={current('/profile')}
-						title="Your account"
-					>
-						{user.name.split(' ')[0]}
-					</a>
-					<a href="/logout" class="auth-logout">Sign out</a>
-				</div>
-			{:else}
-				<a href={resolveRoute('/login')} class="auth-signin" aria-current={current('/login')}>
-					Sign in
-				</a>
-			{/if}
->>>>>>> 4674086 (feat: prepare website for deployment)
 		</div>
 
 		<button
@@ -126,50 +82,10 @@
 			{#each all as l (l.href)}
 				<a href={resolveRoute(l.href)} aria-current={current(l.href)} onclick={() => (open = false)}>{l.label}</a>
 			{/each}
-<<<<<<< HEAD
-=======
-			<a
-				href={resolveRoute(quiz.href)}
-				aria-current={current(quiz.href)}
-				onclick={() => (open = false)}>{quiz.label}</a
-			>
-			<a
-				href={resolveRoute(explore.href)}
-				aria-current={current(explore.href)}
-				onclick={() => (open = false)}>{explore.label}</a
-			>
-			<div class="sheet-divider"></div>
-			{#if user}
-				{#if user.isAdmin}
-					<a
-						href={resolveRoute('/admin')}
-						class="sheet-admin"
-						aria-current={current('/admin')}
-						onclick={() => (open = false)}
-					>
-						Admin Console ✦
-					</a>
-				{/if}
-				<a href={resolveRoute('/profile')} onclick={() => (open = false)}>Account ({user.name})</a>
-				<a href="/logout" class="sheet-logout" onclick={() => (open = false)}>Sign out</a>
-			{:else}
-				<a href={resolveRoute('/login')} aria-current={current('/login')} onclick={() => (open = false)}
-					>Sign in</a
-				>
-				<a
-					href={resolveRoute('/register')}
-					class="sheet-register"
-					aria-current={current('/register')}
-					onclick={() => (open = false)}>Create account</a
-				>
-			{/if}
->>>>>>> 4674086 (feat: prepare website for deployment)
 		</nav>
 	{/if}
-=======
-<script lang="ts">
-	let { user } = $props();
-</script>
+</header>
+
 
 <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
 	<div class="max-w-7xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
@@ -211,7 +127,7 @@
 			{/if}
 		</div>
 	</div>
->>>>>>> 1e2e615 (chore: initialize new  repository)
+
 </header>
 
 <style>
@@ -302,12 +218,7 @@
 		color: #fff;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> 1e2e615 (chore: initialize new  repository)
 	/* Auth elements */
 	.auth-group {
 		display: flex;
@@ -378,11 +289,7 @@
 		background: var(--rust);
 	}
 
-<<<<<<< HEAD
->>>>>>> 4674086 (feat: prepare website for deployment)
-=======
 
->>>>>>> 1e2e615 (chore: initialize new  repository)
 	.burger {
 		display: none;
 		margin-left: auto;
@@ -426,29 +333,7 @@
 	}
 	.sheet a[aria-current='page'] {
 		color: var(--ink);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 1e2e615 (chore: initialize new  repository)
-		box-shadow: inset 3px 0 0 var(--rust);
-		padding-left: 14px;
-	}
-
-	a:focus-visible,
-	button:focus-visible {
-		outline: 2px solid var(--rust);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 860px) {
-		.main,
-		.end {
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 1e2e615 (chore: initialize new  repository)
 		background: color-mix(in srgb, var(--ink) 5%, transparent);
 	}
 	.sheet-divider {
@@ -470,36 +355,13 @@
 		font-weight: 600 !important;
 		color: var(--ink) !important;
 	}
-<<<<<<< HEAD
-
-	@media (max-width: 840px) {
-		.main {
-			display: none;
-		}
-		.end .quiet,
-		.end .pill,
-		.end .auth-group,
-		.end .auth-signin {
->>>>>>> 4674086 (feat: prepare website for deployment)
-			display: none;
-		}
+			/*display: none;
+		
 		.burger {
 			display: flex;
 		}
-	}
-<<<<<<< HEAD
-	@media (prefers-reduced-motion: reduce) {
-		* {
-			transition: none !important;
-		}
-	}
-</style>
-=======
-</style>
->>>>>>> 4674086 (feat: prepare website for deployment)
-=======
-} /* <-- closes @media (max-width: 860px) from line 261 */
-
+	
+/* <-- closes @media (max-width: 860px) from line 261 */
 @media (max-width: 840px) {
 	.main {
 		display: none;
@@ -521,4 +383,4 @@
 	}
 }
 </style>
->>>>>>> 1e2e615 (chore: initialize new  repository)
+
