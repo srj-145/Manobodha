@@ -41,10 +41,18 @@
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
+<<<<<<< HEAD
 		"bcryptjs": "^3.0.3",
 		"chart.js": "^4.5.1",
 		"lenis": "^1.3.26",
 		"mysql2": "^3.24.6",
 		"arctic": "^3.7.0"
+=======
+		"arctic": "^3.7.0",
+		"bcryptjs": "^3.0.3",
+		"chart.js": "^4.5.1",
+		"lenis": "^1.3.26",
+		"mysql2": "^3.24.6"
+>>>>>>> 03ad77f94889b99ad47f680484856a45df0e05db
 	}
 }

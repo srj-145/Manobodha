@@ -1,0 +1,116 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": ".*",
+			"continue": true,
+			"transforms": [
+				{
+					"type": "request.query",
+					"op": "delete",
+					"target": {
+						"key": "__pathname"
+					}
+				}
+			]
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"status": 404,
+			"headers": {
+				"cache-control": "no-store"
+			},
+			"continue": false
+		},
+		{
+			"src": "^/?(?:/__data.json)?$",
+			"dest": "/"
+		},
+		{
+			"src": "^/about/?(?:/__data.json)?$",
+			"dest": "/about"
+		},
+		{
+			"src": "^/admin/?(?:/__data.json)?$",
+			"dest": "/admin"
+		},
+		{
+			"src": "^/admin/export/?(?:/__data.json)?$",
+			"dest": "/admin/export"
+		},
+		{
+			"src": "^/auth/google/?(?:/__data.json)?$",
+			"dest": "/auth/google"
+		},
+		{
+			"src": "^/auth/google/callback/?(?:/__data.json)?$",
+			"dest": "/auth/google/callback"
+		},
+		{
+			"src": "^/compare/?(?:/__data.json)?$",
+			"dest": "/compare"
+		},
+		{
+			"src": "^/explore/?(?:/__data.json)?$",
+			"dest": "/explore"
+		},
+		{
+			"src": "^/login/?(?:/__data.json)?$",
+			"dest": "/login"
+		},
+		{
+			"src": "^/map/?(?:/__data.json)?$",
+			"dest": "/map"
+		},
+		{
+			"src": "^/privacy/?(?:/__data.json)?$",
+			"dest": "/privacy"
+		},
+		{
+			"src": "^/profile/?(?:/__data.json)?$",
+			"dest": "/profile"
+		},
+		{
+			"src": "^/quiz/?(?:/__data.json)?$",
+			"dest": "/quiz"
+		},
+		{
+			"src": "^/register/?(?:/__data.json)?$",
+			"dest": "/register"
+		},
+		{
+			"src": "^/robots\\.txt/?(?:/__data.json)?$",
+			"dest": "/robots.txt"
+		},
+		{
+			"src": "^/sandbox/?(?:/__data.json)?$",
+			"dest": "/sandbox"
+		},
+		{
+			"src": "^/sandbox/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/sandbox/[theoryId]"
+		},
+		{
+			"src": "^/sitemap\\.xml/?(?:/__data.json)?$",
+			"dest": "/sitemap.xml"
+		},
+		{
+			"src": "^/terms/?(?:/__data.json)?$",
+			"dest": "/terms"
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
+		}
+	],
+	"overrides": {}
+}
