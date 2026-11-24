@@ -2,7 +2,11 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+<<<<<<< HEAD
 	import Navbar from '$lib/components/ui/Navbar.svelte';
+=======
+	import Navbar from './navbar.svelte';
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 	import Footer from '$lib/components/ui/Footer.svelte';
 	import Companion from '$lib/components/Companion.svelte';
 	import { site } from '$lib/config';
@@ -12,7 +16,11 @@
 	import { page, navigating } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
+<<<<<<< HEAD
 	let { children } = $props();
+=======
+	let { data, children } = $props();
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 
 	// The Theory Map is a full-viewport tool, so it skips the footer.
 	const showFooter = $derived(!$page.url.pathname.startsWith('/map'));
@@ -63,7 +71,11 @@
 	<div class="loadbar" aria-hidden="true" out:fade={{ duration: 220 }}></div>
 {/if}
 
+<<<<<<< HEAD
 <Navbar />
+=======
+<Navbar user={data?.user} />
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 
 <!-- soft fade-in when moving between top-level sections (keyed on the first path segment, so switching sandbox models does not remount the sticky sub-nav) -->
 {#if showBack}

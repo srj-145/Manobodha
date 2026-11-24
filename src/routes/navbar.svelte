@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- src/lib/components/ui/Navbar.svelte -->
 <script lang="ts">
 	import { page } from '$app/state';
@@ -165,6 +166,52 @@
 >>>>>>> 4674086 (feat: prepare website for deployment)
 		</nav>
 	{/if}
+=======
+<script lang="ts">
+	let { user } = $props();
+</script>
+
+<header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+	<div class="max-w-7xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
+		<a href="/" class="font-bold text-lg text-white tracking-tight">
+			Manobodha
+		</a>
+
+		<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+			<a href="/explore" class="hover:text-indigo-400 transition-colors">Explore</a>
+			<a href="/map" class="hover:text-indigo-400 transition-colors">Theory Map</a>
+			<a href="/compare" class="hover:text-indigo-400 transition-colors">Compare</a>
+			<a href="/quiz" class="hover:text-indigo-400 transition-colors">Quiz</a>
+		</nav>
+
+		<div class="flex items-center gap-4">
+			{#if user}
+				<span class="text-xs font-medium text-slate-300 hidden sm:inline">
+					Hi, {user.name}
+				</span>
+				<a
+					href="/profile"
+					class="text-xs px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 transition-colors"
+				>
+					Profile
+				</a>
+				<a
+					href="/logout"
+					class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition-colors"
+				>
+					Logout
+				</a>
+			{:else}
+				<a
+					href="/login"
+					class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors shadow-sm"
+				>
+					Sign In / Register
+				</a>
+			{/if}
+		</div>
+	</div>
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 </header>
 
 <style>
@@ -256,7 +303,11 @@
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 	/* Auth elements */
 	.auth-group {
 		display: flex;
@@ -327,7 +378,11 @@
 		background: var(--rust);
 	}
 
+<<<<<<< HEAD
 >>>>>>> 4674086 (feat: prepare website for deployment)
+=======
+
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 	.burger {
 		display: none;
 		margin-left: auto;
@@ -372,6 +427,10 @@
 	.sheet a[aria-current='page'] {
 		color: var(--ink);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 		box-shadow: inset 3px 0 0 var(--rust);
 		padding-left: 14px;
 	}
@@ -385,7 +444,11 @@
 	@media (max-width: 860px) {
 		.main,
 		.end {
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 1e2e615 (chore: initialize new  repository)
 		background: color-mix(in srgb, var(--ink) 5%, transparent);
 	}
 	.sheet-divider {
@@ -407,6 +470,7 @@
 		font-weight: 600 !important;
 		color: var(--ink) !important;
 	}
+<<<<<<< HEAD
 
 	@media (max-width: 840px) {
 		.main {
@@ -433,3 +497,28 @@
 =======
 </style>
 >>>>>>> 4674086 (feat: prepare website for deployment)
+=======
+} /* <-- closes @media (max-width: 860px) from line 261 */
+
+@media (max-width: 840px) {
+	.main {
+		display: none;
+	}
+	.end .quiet,
+	.end .pill,
+	.end .auth-group,
+	.end .auth-signin {
+		display: none;
+	}
+	.burger {
+		display: flex;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+	}
+}
+</style>
+>>>>>>> 1e2e615 (chore: initialize new  repository)
