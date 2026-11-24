@@ -48,28 +48,12 @@
 			"dest": "/admin/export"
 		},
 		{
-			"src": "^/api/confidence/?(?:/__data.json)?$",
-			"dest": "/api/confidence"
-		},
-		{
-			"src": "^/api/quiz-result/?(?:/__data.json)?$",
-			"dest": "/api/quiz-result"
-		},
-		{
-			"src": "^/api/session/?(?:/__data.json)?$",
-			"dest": "/api/session"
-		},
-		{
-			"src": "^/api/track/?(?:/__data.json)?$",
-			"dest": "/api/track"
-		},
-		{
-			"src": "^/auth/callback/google/?(?:/__data.json)?$",
-			"dest": "/auth/callback/google"
-		},
-		{
 			"src": "^/auth/google/?(?:/__data.json)?$",
 			"dest": "/auth/google"
+		},
+		{
+			"src": "^/auth/google/callback/?(?:/__data.json)?$",
+			"dest": "/auth/google/callback"
 		},
 		{
 			"src": "^/compare/?(?:/__data.json)?$",
@@ -82,10 +66,6 @@
 		{
 			"src": "^/login/?(?:/__data.json)?$",
 			"dest": "/login"
-		},
-		{
-			"src": "^/logout/?(?:/__data.json)?$",
-			"dest": "/logout"
 		},
 		{
 			"src": "^/map/?(?:/__data.json)?$",
