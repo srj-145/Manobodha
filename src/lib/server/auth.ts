@@ -41,7 +41,7 @@ export function getGoogleConfig(requestOrigin?: string) {
 		readEnvFallback('ORIGIN') ||
 		'http://localhost:5173';
 
-	const redirectUri = `${origin.replace(/\/$/, '')}/auth/callback/google`;
+	const redirectUri = `${origin.replace(/\/$/, '')}/auth/google/callback`;
 
 	const isConfigured = Boolean(
 		clientId &&
