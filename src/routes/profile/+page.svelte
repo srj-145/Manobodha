@@ -152,7 +152,7 @@
 			<div class="info-row">
 				<div>
 					<span class="info-label">Sign-in provider</span>
-					<span class="info-value provider-badge">{data.user.authProvider === 'google' ? 'Google' : 'Email & Password'}</span>
+					<span class="info-value provider-badge">Email &amp; Password</span>
 				</div>
 			</div>
 		</section>

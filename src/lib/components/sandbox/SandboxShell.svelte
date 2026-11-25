@@ -40,7 +40,7 @@
 			<a
 				class="flow-step"
 				class:active={s.id === 'learn' || s.id === theoryId}
-				href={resolveRoute(s.href)}
+				href={resolveRoute(s.href as any)}
 				aria-current={s.id === theoryId ? 'page' : undefined}
 			>
 				<span>{s.n}</span><b>{s.label}</b><small>{s.sub}</small>

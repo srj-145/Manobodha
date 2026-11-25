@@ -76,6 +76,7 @@ export const actions: Actions = {
 		const primaryGoal = data.get('primary_goal') as string | null;
 		const referralSource = (data.get('referral_source') as string | null) || null;
 		const termsAgreed = data.get('terms_agreed') === 'on' || data.get('data_consent') === 'on' ? 1 : 0;
+		const dataConsent = Boolean(termsAgreed);
 		const isInitialOnboarding = data.get('is_onboarding') === 'true';
 
 		if (!academicBackground) {
@@ -216,7 +217,7 @@ export const actions: Actions = {
 			return fail(400, {
 				action: 'changePassword',
 				field: 'general',
-				message: 'This account uses Google login — no password is set.'
+				message: 'This account does not have a password set.'
 			});
 		}
 

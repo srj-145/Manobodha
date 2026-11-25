@@ -14,7 +14,7 @@
 	}
 </script>
 
-<a class="back {variant}" href={resolveRoute(fallback)} {onclick} aria-label="Go back to the previous page">
+<a class="back {variant}" href={resolveRoute(fallback as any)} {onclick} aria-label="Go back to the previous page">
 	<span aria-hidden="true">←</span> Back
 </a>
 

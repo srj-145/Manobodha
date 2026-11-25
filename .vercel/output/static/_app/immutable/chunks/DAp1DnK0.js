@@ -1,1 +1,0 @@
-var e={name:`Manobodha`,tagline:`Understand theories. Don’t just memorize them.`,description:`Manobodha turns psychology theories into interactive sandboxes. Change the parameters, watch what happens, then test what you learned.`,contactEmail:``};export{e as t};

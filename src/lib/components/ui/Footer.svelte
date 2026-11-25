@@ -44,7 +44,7 @@
 					<div>
 						<h2>{c.title}</h2>
 						<ul>
-							{#each c.links as l (l.href)}<li><a href={resolveRoute(l.href)}>{l.label}</a></li>{/each}
+							{#each c.links as l (l.href)}<li><a href={resolveRoute(l.href as any)}>{l.label}</a></li>{/each}
 						</ul>
 					</div>
 				{/each}
